@@ -10,10 +10,8 @@ class UsersController < ApplicationController
 
     def create
         @user = User.new(user_params)
-
         return redirect_to new_user_path unless @user.save 
         session[:user_id] = @user.id
-
         redirect_to user_path(@user)
     end
     
@@ -33,6 +31,11 @@ class UsersController < ApplicationController
         @user = User.find(params[:id])
         @user.update(username: params[:user][:username], email: params[:user][:email], password: params[:user][:password]) 
         redirect_to user_path(@user)
+    end 
+
+    def destroy
+        User.find(params[:id]).destroy
+        redirect_to users_path 
     end 
 
     private
