@@ -1,1 +1,9 @@
 <h1>Welcome <%= @user.username %></h1>
+
+    <% if logged_in? %>
+        <%= link_to 'Log Out', logout_path, method: 'post' %>
+    <% end %> 
+
+    <% if logged_in? %>
+        <%= link_to 'Home', root_path %>
+    <% end %> 
