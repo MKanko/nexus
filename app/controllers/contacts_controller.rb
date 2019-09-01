@@ -2,6 +2,10 @@ class ContactsController < ApplicationController
 
     def index
         @contacts = Contact.all 
+    end
+    
+    def new 
+        @contact = Contact.new 
     end 
 
     def create 
@@ -36,7 +40,7 @@ class ContactsController < ApplicationController
     private
 
     def contact_params
-        params.require(@contact).permit(:name, :photo, :contact_type, :relationship, :home_phone, :cell_phone, :work_phone, :personal_email, :work_email, :home_address, :work_address, :contact_notes)
+        params.require(:contact).permit(:name, :photo, :contact_type, :relationship, :home_phone, :cell_phone, :work_phone, :personal_email, :work_email, :home_address, :work_address, :contact_notes)
     end 
 
 end

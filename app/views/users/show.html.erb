@@ -13,3 +13,8 @@
     <% if logged_in? %>
         <%= link_to 'Edit User', edit_user_path %><br> 
     <% end %>
+
+    <% if logged_in? %>
+        <%= link_to 'Create Contact', new_contact_path %><br> 
+    <% end %>
+
