@@ -16,5 +16,9 @@
     <p>Contact Notes: <%= @contact.contact_notes %></p>
 
     <h3>Edit this contact: <%= link_to @contact.name, edit_contact_path(@contact) %></h3>
+
+    
+    <h3>Create Client From This Contact: <%= link_to 'New Client', new_client_path %><br> 
+    
     
    

@@ -1,0 +1,42 @@
+<%= form_for @client do |f| %>
+    <%= f.label :Contact %>
+    <%= f.text_field :contact_company_name %><br><br>
+
+    <%= f.label :company_name %>
+    <%= f.text_field :company_name %><br><br>
+
+    <%= f.label :photo %>
+    <%= f.text_field :photo %><br><br>
+
+    <%= f.label :company_address %>
+    <%= f.text_field :company_address %><br><br>
+    
+    <%= f.label :company_contact %>
+    <%= f.text_field :company_contact %><br><br>
+
+    <%= f.label :contact_position %>
+    <%= f.text_field :contact_position %><br><br>
+
+    <%= f.label :contact_work_phone %>
+    <%= f.text_field :contact_work_phone %><br><br>
+
+    <%= f.label :contact_cell_phone %>
+    <%= f.text_field :contact_cell_phone %><br><br>
+
+    <%= f.label :contact_email %>
+    <%= f.text_field :contact_email %><br><br>
+
+    <%= f.label :company_notes %>
+    <%= f.text_area :company_notes %><br><br>
+
+    <%= f.label :contact_notes %>
+    <%= f.text_area :contact_notes %><br><br>
+
+    <%= f.label :last_meeting %>
+    <%= f.text_field :last_meeting %><br><br>
+
+    <%= f.label :last_meeting_notes %>
+    <%= f.text_area :last_meeting_notes %><br><br>
+
+    <%= f.submit 'Submit Client' %>
+<% end %>

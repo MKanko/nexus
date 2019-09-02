@@ -5,7 +5,7 @@ class Client < ApplicationRecord
     self.contact = Contact.find_or_create_by(name: name)
   end
 
-  def user_username
+  def contact_company_name
       self.contact ? self.contact.name : nil
   end
 
