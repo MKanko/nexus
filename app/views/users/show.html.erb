@@ -18,3 +18,7 @@
         <%= link_to 'Create Contact', new_contact_path %><br> 
     <% end %>
 
+    <% if logged_in? %>
+        <%= link_to 'Contacts', contacts_path %><br> 
+    <% end %>
+
