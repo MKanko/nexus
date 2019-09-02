@@ -1,14 +1,14 @@
 <h2>Welcome <%= @user.username %></h2>
 
-<h3>Your Email Address is <%= @user.email %><br><br> 
+    <h3>Your Contacts:</h3>
 
-    <% if logged_in? %>
-        <%= link_to 'Log Out', logout_path, method: 'post' %><br>
-    <% end %> 
+        <ul>
+            <% @user.contacts.each do |con| %>
+                <li><%= link_to con.name, contact_path(con) %></li>
+            <% end %>
+        </ul>
 
-    <% if logged_in? %>
-        <%= link_to 'Home', root_path %><br>
-    <% end %> 
+    
 
     <% if logged_in? %>
         <%= link_to 'Edit User', edit_user_path %><br> 
@@ -22,9 +22,5 @@
         <%= link_to 'Contacts', contacts_path %><br> 
     <% end %>
 
-    <ul>
-        <%= @user.contacts.each do |con| %>
-            <li><%= link_to con.name, contact_path(con) %></li>
-        <% end %>
-    </ul>
+    
 
