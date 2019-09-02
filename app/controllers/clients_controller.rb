@@ -36,7 +36,7 @@ class ClientsController < ApplicationController
     private
 
     def client_params
-        params.require(:client).permit(:company_name, :photo, :company_address, :company_contact, :contact_position, :contact_work_phone, :contact_cell_phone, :contact_email, :company_notes, :contact_notes, :last_meeting, :last_meeting_notes)
+        params.require(:client).permit(:company_name, :contact_company_name, :photo, :company_address, :company_contact, :contact_position, :contact_work_phone, :contact_cell_phone, :contact_email, :company_notes, :contact_notes, :last_meeting, :last_meeting_notes)
     end 
 
 end
