@@ -28,4 +28,14 @@ class SchedulesController < ApplicationController
         redirect_to schedule_path(@schedule)
     end 
 
+    def destroy
+        Schedule.find(params[:id]).destroy
+    end 
+
+    private
+
+    def schedule_params
+        params.require(:schedule).permit(:name, :year, :month, :day_date, :day_name, :hour, :half_hour)
+    end 
+
 end
