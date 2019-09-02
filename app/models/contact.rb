@@ -1,12 +1,12 @@
 class Contact < ApplicationRecord
     belongs_to :user 
 
-    def user_name=(name)
-        self.user = User.find_or_create_by(name: name)
+    def user_username=(name)
+        self.user = User.find_or_create_by(username: name)
     end
     
-    def user_name
-        self.user ? self.user.name : nil
+    def user_username
+        self.user ? self.user.username : nil
     end
 end
 

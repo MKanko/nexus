@@ -14,12 +14,8 @@ class ContactsController < ApplicationController
         redirect_to contact_path(@contact)
     end 
 
-    def show
-        if !logged_in?
-            redirect_to '/'
-        else
-            @contact = Contact.find(params[:id])
-        end  
+    def show       
+        @contact = Contact.find(params[:id])        
     end 
 
     def edit
@@ -40,7 +36,7 @@ class ContactsController < ApplicationController
     private
 
     def contact_params
-        params.require(:contact).permit(:name, :photo, :contact_type, :relationship, :home_phone, :cell_phone, :work_phone, :personal_email, :work_email, :home_address, :work_address, :contact_notes)
+        params.require(:contact).permit(:name, :user_username, :photo, :contact_type, :relationship, :home_phone, :cell_phone, :work_phone, :personal_email, :work_email, :home_address, :work_address, :contact_notes)
     end 
 
 end

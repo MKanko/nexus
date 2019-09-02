@@ -1,4 +1,7 @@
 <%= form_for @contact do |f| %>
+    <%= f.label :User %>
+    <%= f.text_field :user_username %><br><br>
+
     <%= f.label :name %>
     <%= f.text_field :name %><br><br>
 
@@ -35,5 +38,5 @@
     <%= f.label :contact_notes %>
     <%= f.text_area :contact_notes %><br><br>
 
-    <%= f.submit 'Submit User' %>
+    <%= f.submit 'Submit Contact' %>
 <% end %>
