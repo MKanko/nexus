@@ -1,5 +1,6 @@
 class Contact < ApplicationRecord
-    belongs_to :user 
+    belongs_to :user
+    has_many :clients 
 
     def user_username=(name)
         self.user = User.find_or_create_by(username: name)
