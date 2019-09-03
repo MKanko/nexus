@@ -1,0 +1,24 @@
+<%= form_for @task do |f| %>
+    <%= f.label :Schedule %>
+    <%= f.text_field :schedule_name %><br><br>
+
+    <%= f.label :Client %>
+    <%= f.text_field :client_company_name %><br><br>
+
+    <%= f.label :name %>
+    <%= f.text_field :name %><br><br>
+
+    <%= f.label :type %>
+    <%= f.text_field :type %><br><br>
+
+    <%= f.label :Description %>
+    <%= f.text_field :notes %><br><br>
+    
+    <%= f.label :deadline %>
+    <%= f.text_field :deadline %><br><br>
+
+    <%= f.label :status %>
+    <%= f.text_field :status %><br><br>
+
+    <%= f.submit 'Submit Task' %>
+<% end %>
