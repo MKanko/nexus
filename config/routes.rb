@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   
-  resources :tasks
   root 'site#home'
 
   get '/signin' => 'sessions#new'
@@ -11,5 +10,6 @@ Rails.application.routes.draw do
   resources :contacts
   resources :clients
   resources :schedules
+  resources :tasks
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
