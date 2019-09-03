@@ -19,16 +19,22 @@
     <% end %>
 
     <% if logged_in? %>
-        <%= link_to 'Create Client', new_client_path %><br> 
+        <%= link_to 'Create Client', new_client_path %><br>
+    <% end %>
+
+    <% if logged_in? %>
+        <%= link_to 'Create Schedule', new_schedule_path %><br> 
+    <% end %>
+
+    <% if logged_in? %>
+        <%= link_to 'Create Task', new_task_path %><br> 
     <% end %>
 
     <% if logged_in? %>
         <%= link_to 'Contacts', contacts_path %><br> 
     <% end %>
 
-    <% if logged_in? %>
-        <%= link_to 'Create Schedule', new_schedule_path %><br> 
-    <% end %>
+    
 
     
 

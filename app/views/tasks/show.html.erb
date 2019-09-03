@@ -1,0 +1,17 @@
+<h2><%= @task.schedule.user.username %></h2> 
+
+<h3>Schedule for <%= @task.schedule.name %></h3>
+<h3>Task for <%= @task.client.company_name %></h3>
+
+<p>Task: <%= @task.name %></p>
+
+<p>Type: <%= @task.type %></p>
+<p>Description: <%= @task.notes %></p>
+<p>Deadline: <%= @task.deadline %></p>
+<p>Status: <%= @task.status %></p>
+
+
+
+<h3>Edit this task: <%= link_to @task.name, edit_task_path(@task) %></h3>
+
+<h3>Back To User Profile: <%= link_to @task.schedule.user.username, user_path(@task.schedule.user) %></h3>
