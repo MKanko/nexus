@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 
     def index
+        # if admin && if admin_logged_in?
         @users = User.all 
     end 
 
@@ -16,15 +17,19 @@ class UsersController < ApplicationController
     end
     
     def show
-        if !logged_in?
-            redirect_to '/'
+        if logged_in?
+            @user = User.find(params[:id]) 
         else
-            @user = User.find(params[:id])
+            redirect_to '/'           
         end
     end 
 
     def edit
-        @user = User.find(params[:id]) 
+        if logged_in?
+            @user = User.find(params[:id]) 
+        else
+            redirect_to '/'
+        end
     end
 
     def update
@@ -34,6 +39,7 @@ class UsersController < ApplicationController
     end 
 
     def destroy
+        # if admin && if admin_logged_in?
         User.find(params[:id]).destroy
         redirect_to users_path 
     end 

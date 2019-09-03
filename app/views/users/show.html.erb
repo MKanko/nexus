@@ -1,14 +1,36 @@
 <h2>Welcome <%= @user.username %></h2>
 
+
+
     <h3>Your Contacts:</h3>
 
         <ul>
             <% @user.contacts.each do |con| %>
                 <li><%= link_to con.name, contact_path(con) %></li>
             <% end %>
-        </ul>
+        </ul> 
 
-    
+        <h3>Your Clients:</h3>
+       <ul>
+           <% @user.clients.each do |client| %>
+               <li><%= link_to client.company_name, client_path(client) %></li>
+           <% end %>
+       </ul>
+
+       <h3>Your Schedules:</h3>
+       <ul>
+           <% @user.schedules.each do |sched| %>
+               <li><%= link_to sched.name, schedule_path(sched) %></li>
+           <% end %>
+       </ul>
+
+       <h3>Your Tasks:</h3>
+       <ul>
+           <% @user.tasks.each do |task| %>
+               <li><%= link_to task.name, task_path(task) %></li>
+           <% end %>
+       </ul>
+
 
     <% if logged_in? %>
         <%= link_to 'Edit User', edit_user_path %><br> 

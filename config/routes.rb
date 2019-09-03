@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   post '/logout' => 'sessions#destroy' 
 
   resources :users
+  
   resources :contacts
   resources :clients
   resources :schedules

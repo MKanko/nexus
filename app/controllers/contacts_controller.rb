@@ -1,11 +1,19 @@
 class ContactsController < ApplicationController
 
     def index
-        @contacts = Contact.all 
+        if logged_in?
+            @contacts = Contact.all 
+        else
+            redirect_to '/'
+        end
     end
     
     def new 
-        @contact = Contact.new 
+        if logged_in?
+            @contact = Contact.new
+        else
+            redirect_to '/'
+        end 
     end 
 
     def create 
@@ -14,12 +22,20 @@ class ContactsController < ApplicationController
         redirect_to contact_path(@contact)
     end 
 
-    def show       
-        @contact = Contact.find(params[:id])        
+    def show
+        if logged_in?       
+            @contact = Contact.find(params[:id])
+        else
+            redirect_to '/'
+        end        
     end 
 
     def edit
-        @contact = Contact.find(params[:id])
+        if logged_in?
+            @contact = Contact.find(params[:id])
+        else 
+            redirect_to '/'
+        end 
     end 
     
     def update
@@ -29,8 +45,12 @@ class ContactsController < ApplicationController
     end 
 
     def destroy
-        Contact.find(params[:id]).destroy
-        redirect_to contacts_path
+        if logged_in?
+            Contact.find(params[:id]).destroy
+            redirect_to contacts_path
+        else 
+            redirect_to '/'
+        end 
     end 
 
     private
