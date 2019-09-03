@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  resources :tasks
   root 'site#home'
 
   get '/signin' => 'sessions#new'
