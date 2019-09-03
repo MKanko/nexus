@@ -11,4 +11,6 @@
 <p>Schedule Item: <%= @schedule.schedule_item %></p>
 
 
-<h3>Edit this schedule: <%= link_to @schedule.name, edit_schedule_path(@contact) %></h3>
+<h3>Edit this schedule: <%= link_to @schedule.name, edit_schedule_path(@schedule) %></h3>
+
+<h3>Back To User Profile: <%= link_to @schedule.user.username, user_path(@schedule.user) %></h3>
