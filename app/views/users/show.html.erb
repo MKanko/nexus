@@ -26,5 +26,9 @@
         <%= link_to 'Contacts', contacts_path %><br> 
     <% end %>
 
+    <% if logged_in? %>
+        <%= link_to 'Create Schedule', new_schedule_path %><br> 
+    <% end %>
+
     
 
