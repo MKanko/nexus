@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
 
+    skip_before_action :require_login, only: [:new, :create]
+
     def index
         # if admin && if admin_logged_in?
         @users = User.all 
@@ -17,19 +19,11 @@ class UsersController < ApplicationController
     end
     
     def show
-        if logged_in?
-            @user = User.find(params[:id]) 
-        else
-            redirect_to '/'           
-        end
+        @user = User.find(params[:id])         
     end 
 
     def edit
-        if logged_in?
-            @user = User.find(params[:id]) 
-        else
-            redirect_to '/'
-        end
+        @user = User.find(params[:id]) 
     end
 
     def update

@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+
+    skip_before_action :require_login, only: [:new, :create]
     
     def new
         @user = User.new  
@@ -12,12 +14,8 @@ class SessionsController < ApplicationController
     end 
 
     def destroy
-        if logged_in?
-            session.destroy  
-            redirect_to '/'
-        else 
-            redirect_to '/signin'
-        end 
+        session.destroy  
+        redirect_to '/'
     end 
 
 end 

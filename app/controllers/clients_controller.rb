@@ -4,7 +4,7 @@ class ClientsController < ApplicationController
         @clients = Client.all 
     end 
 
-    def new 
+    def new
         @client = Client.new 
     end 
 
