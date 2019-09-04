@@ -13,7 +13,7 @@
         <h3>Your Clients:</h3>
        <ul>
            <% @user.clients.each do |client| %>
-               <li><%= link_to client.company_name, client_path(client) %></li>
+               <li><%= link_to client.company_name, contact_client_path(client.contact_id, client.id) %></li>
            <% end %>
        </ul>
 
@@ -40,9 +40,7 @@
         <%= link_to 'Create Contact', new_contact_path %><br> 
     <% end %>
 
-    <% if logged_in? %>
-        <%= link_to 'Create Client', new_client_path %><br>
-    <% end %>
+   
 
     <% if logged_in? %>
         <%= link_to 'Create Schedule', new_schedule_path %><br> 

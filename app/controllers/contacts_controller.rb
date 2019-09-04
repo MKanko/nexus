@@ -5,10 +5,10 @@ class ContactsController < ApplicationController
     end
     
     def new
-        @contact = Contact.new          
+        @contact = Contact.new                
     end 
 
-    def create 
+    def create        
         @contact = Contact.new(contact_params)
         return render :new unless @contact.save
         redirect_to contact_path(@contact)
@@ -36,7 +36,7 @@ class ContactsController < ApplicationController
     private
 
     def contact_params
-        params.require(:contact).permit(:name, :user_username, :photo, :contact_type, :relationship, :home_phone, :cell_phone, :work_phone, :personal_email, :work_email, :home_address, :work_address, :contact_notes)
+        params.require(:contact).permit(:name, :user_id, :photo, :contact_type, :relationship, :home_phone, :cell_phone, :work_phone, :personal_email, :work_email, :home_address, :work_address, :contact_notes)
     end 
 
 end

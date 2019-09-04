@@ -15,4 +15,4 @@
 
 <p>Last Meeting Notes: <%= @client.last_meeting_notes %></p>
 
-<h3>Edit this client: <%= link_to @client.company_name, edit_client_path(@client) %></h3>
+<h3>Edit this client: <%= link_to @client.company_name, edit_contact_client_path(@client.contact_id, @client.id) %></h3>

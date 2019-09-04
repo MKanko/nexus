@@ -4,12 +4,10 @@ class Contact < ApplicationRecord
     
     validates :name, presence: true
 
-    def user_username=(name)
-        self.user = User.find_or_create_by(username: name)
-    end
-    
-    def user_username
-        self.user ? self.user.username : nil
-    end
+    validates_format_of :home_phone, :cell_phone, :work_phone,
+  :with => /\(?[0-9]{3}\)?-[0-9]{3}-[0-9]{4}/,
+  :message => "- Phone numbers must be in xxx-xxx-xxxx format."
+   
 end
+
 

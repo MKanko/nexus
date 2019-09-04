@@ -1,4 +1,5 @@
-<%= form_for @client do |f| %>
+<%= form_for [@contact, @client] do |f| %>
+
     <% if @client.errors.any? %>
         <div id="error_explanation">
             <h2>
@@ -14,9 +15,9 @@
         </div>
     <% end %>
 
-    <%= f.label :Contact %>
-    <%= f.text_field :contact_company_name %><br><br>
-
+    
+    <%= f.hidden_field :contact_id, value: @client.contact_id %><br><br>
+    
     <%= f.label :company_name %>
     <%= f.text_field :company_name %><br><br>
 
