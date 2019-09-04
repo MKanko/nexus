@@ -1,6 +1,8 @@
 class Contact < ApplicationRecord
     belongs_to :user
-    has_many :clients 
+    has_many :clients
+    
+    validates :name, presence: true
 
     def user_username=(name)
         self.user = User.find_or_create_by(username: name)

@@ -10,7 +10,7 @@ class ContactsController < ApplicationController
 
     def create 
         @contact = Contact.new(contact_params)
-        return redirect_to new_contact_path unless @contact.save
+        return render :new unless @contact.save
         redirect_to contact_path(@contact)
     end 
 
