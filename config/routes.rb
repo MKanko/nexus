@@ -4,9 +4,10 @@ Rails.application.routes.draw do
 
   get '/signin' => 'sessions#new'
   post '/signin' => 'sessions#create'
-  post '/logout' => 'sessions#destroy' 
-
+  post '/logout' => 'sessions#destroy'
   
+  get '/auth/facebook/callback' => 'sessions#create'
+ 
   resources :contacts do
     resources :clients
   end 
