@@ -5,7 +5,8 @@ class ContactsController < ApplicationController
     end
     
     def new
-        @contact = Contact.new                
+        @contact = Contact.new
+        @contact.clients.build                
     end 
 
     def create        
@@ -36,7 +37,7 @@ class ContactsController < ApplicationController
     private
 
     def contact_params
-        params.require(:contact).permit(:name, :user_id, :photo, :contact_type, :relationship, :home_phone, :cell_phone, :work_phone, :personal_email, :work_email, :home_address, :work_address, :contact_notes)
+        params.require(:contact).permit(:name, :user_id, :photo, :contact_type, :relationship, :home_phone, :cell_phone, :work_phone, :personal_email, :work_email, :home_address, :work_address, :contact_notes, clients_attributes: [:company_name, :photo, :company_address, :company_contact, :contact_position, :contact_work_phone, :contact_cell_phone, :contact_email, :company_notes, :contact_notes, :last_meeting, :last_meeting_notes])
     end 
 
 end

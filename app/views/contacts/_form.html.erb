@@ -1,5 +1,6 @@
 
 <%= form_for @contact do |f| %>
+
     <% if @contact.errors.any? %>
         <div id="error_explanation">
             <h2>
@@ -16,6 +17,8 @@
     <% end %>
    
     <%= f.hidden_field :user_id, value: current_user.id %>
+
+    <h3>Contact:</h3>
 
     <%= f.label :name %>
     <%= f.text_field :name %><br><br>
@@ -53,5 +56,48 @@
     <%= f.label :contact_notes %>
     <%= f.text_area :contact_notes %><br><br>
 
-    <%= f.submit 'Submit Contact' %>
+    <%= f.fields_for :clients do |client| %>
+
+        <h3>Client:</h3>
+
+        <%= client.label :company_name %>
+        <%= client.text_field :company_name %><br><br>
+
+        <%= client.label :photo %>
+        <%= client.text_field :photo %><br><br>
+
+        <%= client.label :company_address %>
+        <%= client.text_field :company_address %><br><br>
+        
+        <%= client.label :company_contact %>
+        <%= client.text_field :company_contact %><br><br>
+
+        <%= client.label :contact_position %>
+        <%= client.text_field :contact_position %><br><br>
+
+        <%= client.label :contact_work_phone %>
+        <%= client.text_field :contact_work_phone %><br><br>
+
+        <%= client.label :contact_cell_phone %>
+        <%= client.text_field :contact_cell_phone %><br><br>
+
+        <%= client.label :contact_email %>
+        <%= client.text_field :contact_email %><br><br>
+
+        <%= client.label :company_notes %>
+        <%= client.text_area :company_notes %><br><br>
+
+        <%= client.label :contact_notes %>
+        <%= client.text_area :contact_notes %><br><br>
+
+        <%= client.label :last_meeting %>
+        <%= client.text_field :last_meeting %><br><br>
+
+        <%= client.label :last_meeting_notes %>
+        <%= client.text_area :last_meeting_notes %><br><br>
+
+    <% end %>
+
+    <%= f.submit 'Submit' %>
+
 <% end %>
