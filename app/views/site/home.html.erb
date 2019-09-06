@@ -1,8 +1,21 @@
-<h1 align='center'>Nexus</h1>
+<head><script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+</head>
+<br>
+<h1 align='center' class='ui header'>Nexus</h1>
+<br>
 
-    <h3 align='center'><%= link_to 'New User Sign Up', new_user_path %></h3>
-    <h3 align='center'><%= link_to 'Existing User Sign In', '/signin' %></h3><br><br><br>
-
-    <h3 align='center'><%= link_to('Log in with Facebook!', '/auth/facebook') %></h3>
+    <h3 align='center'><%= link_to 'New User Sign Up', new_user_path, class: 'ui button' %></h3>
+    
+    <h3 align='center'><%= link_to 'Existing User Sign In', '/signin', class: 'ui button' %></h3>
+    <br>
+    
+    <div class='ui center aligned basic segment'> 
+        <button class='ui facebook button'>
+            <i class='facebook icon'></i>
+            <%= link_to('Log in with Facebook', '/auth/facebook', {:style => 'color: white;'}) %>
+        </button>
+    </div>
+    
 
     <h2 align='center'><%= flash[:error] %></h2>

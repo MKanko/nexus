@@ -32,7 +32,7 @@ class ClientsController < ApplicationController
 
     def destroy
         Client.find(params[:id]).destroy
-        redirect_to clients_path
+        redirect_to contact_clients_path
     end 
 
     private

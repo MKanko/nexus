@@ -1,6 +1,8 @@
+<% if @user.image %>
+    <img src=<%= @user.image %>/>
+<% end %>
+
 <h2>Welcome <%= @user.username %></h2>
-
-
 
     <h3>Your Contacts:</h3>
 
