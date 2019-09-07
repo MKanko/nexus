@@ -1,7 +1,0 @@
-<h2>All Clients In Database</h2>
-
-    <ul>
-        <% @clients.each do |client| %>
-            <li><%= link_to client.company_name, client_path(client) %></li>
-        <% end %>
-    </ul>

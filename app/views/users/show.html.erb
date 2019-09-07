@@ -12,10 +12,10 @@
             <% end %>
         </ul> 
 
-        <h3>Your Clients:</h3>
+        <h3>Your companys:</h3>
        <ul>
-           <% @user.clients.each do |client| %>
-               <li><%= link_to client.company_name, contact_client_path(client.contact_id, client.id) %></li>
+           <% @user.companys.each do |company| %>
+               <li><%= link_to company.company_name, contact_company_path(company.contact_id, company.id) %></li>
            <% end %>
        </ul>
 

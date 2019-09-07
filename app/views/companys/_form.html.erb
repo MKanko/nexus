@@ -1,14 +1,14 @@
-<%= form_for [@contact, @client] do |f| %>
+<%= form_for [@contact, @company] do |f| %>
 
-    <% if @client.errors.any? %>
+    <% if @company.errors.any? %>
         <div id="error_explanation">
             <h2>
-            <%= pluralize(@client.errors.count, "error") %>
-            prohibited this client from being saved:
+            <%= pluralize(@company.errors.count, "error") %>
+            prohibited this company from being saved:
             </h2>
         
             <ul>
-            <% @client.errors.full_messages.each do |msg| %>
+            <% @company.errors.full_messages.each do |msg| %>
             <li><%= msg %></li>
             <% end %>
             </ul>
@@ -16,7 +16,7 @@
     <% end %>
 
     
-    <%= f.hidden_field :contact_id, value: @client.contact_id %><br><br>
+    <%= f.hidden_field :contact_id, value: @company.contact_id %><br><br>
     
     <%= f.label :company_name %>
     <%= f.text_field :company_name %><br><br>
@@ -54,6 +54,6 @@
     <%= f.label :last_meeting_notes %>
     <%= f.datetime_select :last_meeting_notes %><br><br>
 
-    <%= f.submit 'Submit Client' %><br>
+    <%= f.submit 'Submit company' %><br>
 <% end %>
 

@@ -4,7 +4,7 @@ _________________________________________________________________________
 
 Nexus
 
-Basic CRM contacts app for users to manage contacts, clients, schedules, and tasks.
+Basic CRM contacts app for users to manage contacts, companys, schedules, and tasks.
 
 ______________________________________________________________________________________________
 

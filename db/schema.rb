@@ -10,9 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_05_035735) do
+ActiveRecord::Schema.define(version: 2019_09_07_232851) do
 
-  create_table "clients", force: :cascade do |t|
+  create_table "companys", force: :cascade do |t|
     t.string "company_name"
     t.integer "contact_id"
     t.binary "photo"
@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 2019_09_05_035735) do
     t.text "last_meeting_notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["contact_id"], name: "index_clients_on_contact_id"
+    t.index ["contact_id"], name: "index_companys_on_contact_id"
   end
 
   create_table "contacts", force: :cascade do |t|

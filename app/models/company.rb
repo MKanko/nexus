@@ -1,4 +1,4 @@
-class Client < ApplicationRecord
+class Company < ApplicationRecord
   belongs_to :contact
   has_many :tasks
 

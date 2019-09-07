@@ -1,6 +1,6 @@
 class Task < ApplicationRecord
   belongs_to :schedule
-  belongs_to :client
+  belongs_to :company
 
   def schedule_name=(name)
     self.schedule = Schedule.find_or_create_by(name: name)
@@ -10,12 +10,12 @@ class Task < ApplicationRecord
     self.schedule ? self.schedule.name : nil
   end
 
-  def client_company_name=(name)
-    self.client = Client.find_or_create_by(company_name: name)
+  def company_company_name=(name)
+    self.company = company.find_or_create_by(company_name: name)
   end 
 
-  def client_company_name
-    self.client ? self.client.company_name : nil
+  def company_company_name
+    self.company ? self.company.company_name : nil
   end 
 
 end
