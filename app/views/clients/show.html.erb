@@ -13,7 +13,7 @@
 <p>Email: <%= @client.contact_email %></p>
 <p>Company Notes: <%= @client.company_notes %></p>
 <p>Contact Notes: <%= @client.contact_notes %></p>
-<p>Last Meeting: <%= @client.last_meeting %></p><br>
+<p>Last Meeting: <%= @client.last_meeting.strftime("%A, %d %b %Y %l:%M %p") %></p><br>
 
 <p>Last Meeting Notes: <%= @client.last_meeting_notes %></p>
 

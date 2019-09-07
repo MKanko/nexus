@@ -91,7 +91,7 @@
         <%= client.text_area :contact_notes %><br><br>
 
         <%= client.label :last_meeting %>
-        <%= client.text_field :last_meeting %><br><br>
+        <%= client.datetime_select :last_meeting, {:ampm => true} %><br><br>
 
         <%= client.label :last_meeting_notes %>
         <%= client.text_area :last_meeting_notes %><br><br>
