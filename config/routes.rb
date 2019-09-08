@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     get '/auth/facebook/callback' => 'sessions#create'
   
     resources :contacts do
-        resources :companys
+        resources :companies
     end 
     
     resources :users

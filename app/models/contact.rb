@@ -1,8 +1,8 @@
 class Contact < ApplicationRecord
     belongs_to :user
-    has_many :companys
+    has_many :companies
 
-    accepts_nested_attributes_for :companys
+    accepts_nested_attributes_for :companies
     
     validates :name, presence: true
 
