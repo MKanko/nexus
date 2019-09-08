@@ -1,7 +1,7 @@
-<h2>All Companys In Database</h2>
+<h2>All companies In Database</h2>
 
     <ul>
-        <% @companys.each do |company| %>
+        <% @companies.each do |company| %>
             <li><%= link_to company.company_name, company_path(company) %></li>
         <% end %>
     </ul>

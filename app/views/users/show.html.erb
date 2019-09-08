@@ -12,9 +12,9 @@
             <% end %>
         </ul> 
 
-        <h3>Your companys:</h3>
+        <h3>Your companies:</h3>
        <ul>
-           <% @user.companys.each do |company| %>
+           <% @user.companies.each do |company| %>
                <li><%= link_to company.company_name, contact_company_path(company.contact_id, company.id) %></li>
            <% end %>
        </ul>
