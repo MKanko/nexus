@@ -1,6 +1,7 @@
 class Schedule < ApplicationRecord
   belongs_to :user
   has_many :tasks
+  has_many :companies, through: :tasks
 
   def user_username=(name)
     self.user = User.find_or_create_by(username: name)

@@ -10,12 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_08_001501) do
+ActiveRecord::Schema.define(version: 2019_09_05_035735) do
 
   create_table "companies", force: :cascade do |t|
     t.string "company_name"
-    t.integer "contact_id"
-    t.binary "photo"
+    t.integer "user_id"
     t.string "company_address"
     t.string "company_contact"
     t.string "contact_position"
@@ -28,12 +27,12 @@ ActiveRecord::Schema.define(version: 2019_09_08_001501) do
     t.text "last_meeting_notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["contact_id"], name: "index_companies_on_contact_id"
+    t.index ["user_id"], name: "index_companies_on_user_id"
   end
 
   create_table "contacts", force: :cascade do |t|
     t.string "name"
-    t.integer "user_id"
+    t.integer "company_id"
     t.binary "photo"
     t.string "contact_type"
     t.string "relationship"
@@ -47,7 +46,7 @@ ActiveRecord::Schema.define(version: 2019_09_08_001501) do
     t.text "contact_notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_contacts_on_user_id"
+    t.index ["company_id"], name: "index_contacts_on_company_id"
   end
 
   create_table "schedules", force: :cascade do |t|
@@ -68,14 +67,14 @@ ActiveRecord::Schema.define(version: 2019_09_08_001501) do
   create_table "tasks", force: :cascade do |t|
     t.string "name"
     t.integer "schedule_id"
-    t.integer "client_id"
+    t.integer "company_id"
     t.string "type"
     t.string "status"
     t.datetime "deadline"
     t.text "notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["client_id"], name: "index_tasks_on_client_id"
+    t.index ["company_id"], name: "index_tasks_on_company_id"
     t.index ["schedule_id"], name: "index_tasks_on_schedule_id"
   end
 

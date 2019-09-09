@@ -2,8 +2,8 @@ class User < ApplicationRecord
 
     has_secure_password 
 
-    has_many :contacts
-    has_many :companies, through: :contacts
+    has_many :companies 
+    has_many :contacts, through: :companies
     has_many :schedules
     has_many :tasks, through: :schedules
 

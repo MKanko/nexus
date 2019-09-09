@@ -1,9 +1,8 @@
-class Createcompanies < ActiveRecord::Migration[5.2]
+class CreateCompanies < ActiveRecord::Migration[5.2]
   def change
     create_table :companies do |t|
       t.string :company_name
-      t.belongs_to :contact, foreign_key: true
-      t.binary :photo
+      t.belongs_to :user, foreign_key: true
       t.string :company_address
       t.string :company_contact
       t.string :contact_position
