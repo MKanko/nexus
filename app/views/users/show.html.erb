@@ -8,14 +8,14 @@
 
         <ul>
             <% @user.contacts.each do |con| %>
-                <li><%= link_to con.name, contact_path(con) %></li>
+                <li><%= link_to con.name, company_contact_path(con.company, con) %></li>
             <% end %>
         </ul> 
 
         <h3>Your companies:</h3>
        <ul>
            <% @user.companies.each do |company| %>
-               <li><%= link_to company.company_name, contact_company_path(company.contact_id, company.id) %></li>
+               <li><%= link_to company.company_name, company_path(company) %></li>
            <% end %>
        </ul>
 
@@ -39,7 +39,7 @@
     <% end %>
 
     <% if logged_in? %>
-        <%= link_to 'Create Contact', new_contact_path %><br> 
+        <%= link_to 'Create Company', new_company_path %><br>
     <% end %>
 
    
@@ -52,9 +52,7 @@
         <%= link_to 'Create Task', new_task_path %><br> 
     <% end %>
 
-    <% if logged_in? %>
-        <%= link_to 'Contacts', contacts_path %><br> 
-    <% end %>
+  
 
     
 

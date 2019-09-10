@@ -16,7 +16,7 @@
         </div>
     <% end %>
    
-    <%= f.hidden_field :user_id, value: current_user.id %>
+    <%= f.hidden_field :company_id, value: @contact.company.id %>
 
     <h3>Contact:</h3>
 
@@ -55,48 +55,6 @@
 
     <%= f.label :contact_notes %>
     <%= f.text_area :contact_notes %><br><br>
-
-    <%= f.fields_for :companies do |company| %>
-
-        <h3>Company:</h3>
-
-        <%= company.label :company_name %>
-        <%= company.text_field :company_name %><br><br>
-
-        <%= company.label :photo %>
-        <%= company.text_field :photo %><br><br>
-
-        <%= company.label :company_address %>
-        <%= company.text_field :company_address %><br><br>
-        
-        <%= company.label :company_contact %>
-        <%= company.text_field :company_contact %><br><br>
-
-        <%= company.label :contact_position %>
-        <%= company.text_field :contact_position %><br><br>
-
-        <%= company.label :contact_work_phone %>
-        <%= company.text_field :contact_work_phone %><br><br>
-
-        <%= company.label :contact_cell_phone %>
-        <%= company.text_field :contact_cell_phone %><br><br>
-
-        <%= company.label :contact_email %>
-        <%= company.text_field :contact_email %><br><br>
-
-        <%= company.label :company_notes %>
-        <%= company.text_area :company_notes %><br><br>
-
-        <%= company.label :contact_notes %>
-        <%= company.text_area :contact_notes %><br><br>
-
-        <%= company.label :last_meeting %>
-        <%= company.datetime_select :last_meeting, {:ampm => true} %><br><br>
-
-        <%= company.label :last_meeting_notes %>
-        <%= company.text_area :last_meeting_notes %><br><br>
-
-    <% end %>
 
     <%= f.submit 'Submit' %>
 

@@ -1,20 +1,26 @@
-<h2><%= @company.contact.user.username %></h2>
+<h2><%= @company.user.username %></h2>
 
-<h3>company: <%= @company.company_name %></h3><br>
+<h3>Company: <%= @company.company_name %></h3><br>
 
 <p>Company Address: <%= @company.company_address %></p>
 
-<p>Company Contact: <%= link_to @company.company_contact, contact_path(@company.contact) %></p>
+<% if @company.primary_contact_id %>
+<% @primary_contact = Contact.find(@company.primary_contact_id) %>
+<p>Company Contact: <%= link_to @primary_contact.name, company_contact_path(@company, @primary_contact) %></p>
 
-<p>Photo: <%= @company.photo %></p>
+<% end %>
+
 <p>Contact Position: <%= @company.contact_position %></p>
 <p>Work Phone: <%= @company.contact_work_phone %></p>
 <p>Cell Phone: <%= @company.contact_cell_phone %></p>
 <p>Email: <%= @company.contact_email %></p>
 <p>Company Notes: <%= @company.company_notes %></p>
 <p>Contact Notes: <%= @company.contact_notes %></p>
-<p>Last Meeting: <%= @company.last_meeting.strftime("%A, %d %b %Y %l:%M %p") %></p><br>
+
+<p>Last Meeting: <%= @company.last_meeting.strftime("%A %d %b %Y %l:%M %p") %></p><br>
 
 <p>Last Meeting Notes: <%= @company.last_meeting_notes %></p>
 
-<h3>Edit this company: <%= link_to @company.company_name, edit_contact_company_path(@company.contact_id, @company.id) %></h3>
+<h3>Edit this company: <%= link_to @company.company_name, edit_company_path(@company) %></h3>
+
+<%= link_to 'Delete Company', company_path, method: :delete, data: { confirm: "Are you sure?" } %>

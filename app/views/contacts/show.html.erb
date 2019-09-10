@@ -1,6 +1,8 @@
-<h2>User: <%= @contact.user.username %></h2>
+<h2>User: <%= @contact.company.user.username %></h2>
 
     <h3>Contact: <%= @contact.name %></h3><br>
+
+    <h4>Company: <%= link_to @contact.company.company_name, company_path(@contact.company) %></h4>
 
     <p>Photo: <%= @contact.photo %></p>
     <p>Contact Type: <%= @contact.contact_type %></p>
@@ -17,10 +19,12 @@
 
     <p>Contact Notes: <%= @contact.contact_notes %></p>
 
-    <h3>Edit this contact: <%= link_to @contact.name, edit_contact_path(@contact) %></h3>
+    <h3>Edit this contact: <%= link_to @contact.name, edit_company_contact_path(@contact) %></h3>
+
+    <%= link_to 'Delete Contact', company_contact_path, method: :delete, data: { confirm: "Are you sure?" } %>
 
     
-    <h3>Create company From This Contact: <%= link_to 'New company', new_contact_company_path(@contact.id) %><br> 
+    
     
     
    
