@@ -9,4 +9,12 @@ class Company < ApplicationRecord
   # validates :company_name, presence: true
   # validates :company_contact, presence: true 
 
+  def set_primary_contact_id(contact)
+    if contact.primary_contact
+      self.primary_contact_id = contact.id
+      self.save     
+    end 
+  end 
+
 end
+

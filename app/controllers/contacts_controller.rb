@@ -1,7 +1,8 @@
 class ContactsController < ApplicationController
 
     def index      
-        @contacts = Contact.all         
+        @contacts = Contact.all
+        # find company that these contacts are associated with         
     end
 
     def new 
@@ -22,7 +23,9 @@ class ContactsController < ApplicationController
     end 
 
     def edit
+        #binding.pry
         @contact = Contact.find(params[:id])
+        @company = Company.find(params[:company_id])
     end 
     
     def update
@@ -40,7 +43,7 @@ class ContactsController < ApplicationController
     private
 
     def contact_params
-        params.require(:contact).permit(:name, :company_id, :photo, :contact_type, :relationship, :home_phone, :cell_phone, :work_phone, :personal_email, :work_email, :home_address, :work_address, :contact_notes, companies_attributes: [:company_name, :photo, :company_address, :company_contact, :contact_position, :contact_work_phone, :contact_cell_phone, :contact_email, :company_notes, :contact_notes, :last_meeting, :last_meeting_notes])
+        params.require(:contact).permit(:name, :company_id, :photo, :contact_type, :relationship, :home_phone, :cell_phone, :work_phone, :personal_email, :work_email, :home_address, :work_address, :contact_notes, :last_meeting_date, :last_meeting_notes)
     end 
 
 end

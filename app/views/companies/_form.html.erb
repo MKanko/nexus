@@ -44,12 +44,6 @@
     <%= f.label :contact_notes %>
     <%= f.text_area :contact_notes %><br><br>
 
-    <%= f.label :last_meeting %>
-    <%= f.datetime_select :last_meeting, {:ampm => true} %><br><br>
-
-    <%= f.label :last_meeting_notes %>
-    <%= f.text_area :last_meeting_notes %><br><br>
-
     <h3>Contact:</h3>
 
     <%= f.fields_for :contacts do |contact| %>
@@ -57,8 +51,8 @@
         <%= contact.label :name %>
         <%= contact.text_field :name %><br><br>
 
-        <label>Company Primary Contact</label>
-        <input type='checkbox' name='company[contacts_attributes][0][primary_contact]'><br><br>
+        <%= contact.label :primary_contact %>
+        <%= contact.check_box :primary_contact %><br><br>
 
         <%= contact.label :photo %>
         <%= contact.text_field :photo %><br><br>
@@ -93,8 +87,14 @@
         <%= contact.label :contact_notes %>
         <%= contact.text_area :contact_notes %><br><br>
 
+        <%= contact.label :last_meeting_date %>
+        <%= contact.datetime_select :last_meeting_date, {:ampm => true} %><br><br>
+
+        <%= contact.label :last_meeting_notes %>
+        <%= contact.text_area :last_meeting_notes %><br><br>
+
     <% end %> 
 
-    <%= f.submit 'Submit company' %><br>
+    <%= f.submit 'Submit' %><br>
 <% end %>
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_10_011352) do
+ActiveRecord::Schema.define(version: 2019_09_10_225630) do
 
   create_table "companies", force: :cascade do |t|
     t.string "company_name"
@@ -23,8 +23,6 @@ ActiveRecord::Schema.define(version: 2019_09_10_011352) do
     t.string "contact_email"
     t.text "company_notes"
     t.text "contact_notes"
-    t.datetime "last_meeting"
-    t.text "last_meeting_notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "primary_contact_id"
@@ -47,6 +45,9 @@ ActiveRecord::Schema.define(version: 2019_09_10_011352) do
     t.text "contact_notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "last_meeting_date"
+    t.text "last_meeting_notes"
+    t.boolean "primary_contact"
     t.index ["company_id"], name: "index_contacts_on_company_id"
   end
 

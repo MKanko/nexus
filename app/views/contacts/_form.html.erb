@@ -1,5 +1,5 @@
 
-<%= form_for @contact do |f| %>
+<%= form_for [@contact, @company] do |f| %>
 
     <% if @contact.errors.any? %>
         <div id="error_explanation">
@@ -52,6 +52,12 @@
 
     <%= f.label :work_address %>
     <%= f.text_field :work_address %><br><br>
+
+    <%= contact.label :last_meeting_date %>
+    <%= contact.datetime_select :last_meeting_date, {:ampm => true} %><br><br>
+
+    <%= contact.label :last_meeting_notes %>
+    <%= contact.text_area :last_meeting_notes %><br><br>
 
     <%= f.label :contact_notes %>
     <%= f.text_area :contact_notes %><br><br>

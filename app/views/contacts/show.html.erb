@@ -17,9 +17,12 @@
     <p>Home Address: <%= @contact.home_address %></p>
     <p>Work Address: <%= @contact.work_address %></p><br>
 
+    <p>Last Meeting Date: <%= @contact.last_meeting_date.strftime("%A %d %b %Y %l:%M %p") %></p><br>
+    <p>Last Meeting Notes: <%= @contact.last_meeting_notes %></p>
+
     <p>Contact Notes: <%= @contact.contact_notes %></p>
 
-    <h3>Edit this contact: <%= link_to @contact.name, edit_company_contact_path(@contact) %></h3>
+    <h3>Edit this contact: <%= link_to @contact.name, edit_company_contact_path(@contact.company, @contact) %></h3>
 
     <%= link_to 'Delete Contact', company_contact_path, method: :delete, data: { confirm: "Are you sure?" } %>
 

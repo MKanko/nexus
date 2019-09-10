@@ -17,9 +17,7 @@
 <p>Company Notes: <%= @company.company_notes %></p>
 <p>Contact Notes: <%= @company.contact_notes %></p>
 
-<p>Last Meeting: <%= @company.last_meeting.strftime("%A %d %b %Y %l:%M %p") %></p><br>
 
-<p>Last Meeting Notes: <%= @company.last_meeting_notes %></p>
 
 <h3>Edit this company: <%= link_to @company.company_name, edit_company_path(@company) %></h3>
 
