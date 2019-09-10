@@ -10,14 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_10_225630) do
+ActiveRecord::Schema.define(version: 2019_09_10_231105) do
 
   create_table "companies", force: :cascade do |t|
     t.string "company_name"
     t.integer "user_id"
     t.string "company_address"
     t.string "company_contact"
-    t.string "contact_position"
+    t.string "company_type"
     t.string "contact_work_phone"
     t.string "contact_cell_phone"
     t.string "contact_email"
