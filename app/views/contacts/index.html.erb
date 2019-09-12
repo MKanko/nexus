@@ -1,8 +1,8 @@
-<h2>All Contacts In Database</h2>
+<h2><%= @company.company_name %> Contacts:</h2>
 
     <ul>
         <% @contacts.each do |con| %>
-            <li><%= link_to con.name, company_contact_path(con) %></li>
+            <li><%= link_to con.name, company_contact_path(con.company, con) %></li>
         <% end %>
     </ul>
 

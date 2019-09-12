@@ -1,15 +1,20 @@
 class ContactsController < ApplicationController
 
-    def index      
-        @contacts = Contact.all
-        # find company that these contacts are associated with         
+    def index 
+        #binding.pry
+        @company = Company.find_by(id: params[:company_id])      
+        @contacts = @company.contacts
+                 
     end
 
     def new 
         #binding.pry
-        @contact = Contact.new(company_id: params[:company_id])
-        @company = Company.find(params[:company_id])
-        
+        if params[:company_id] && !Company.exists?(params[:company_id])
+            redirect_to user_path(current_user), alert: "Company not found."
+        else 
+            @contact = Contact.new(company_id: params[:company_id])
+            @company = Company.find(params[:company_id])
+        end         
     end  
 
     def create        
@@ -24,15 +29,22 @@ class ContactsController < ApplicationController
 
     def edit
         #binding.pry
-        @contact = Contact.find(params[:id])
-        @company = Company.find(params[:company_id])
+        if params[:company_id]
+            @company = Company.find_by(id: params[:company_id])
+            if @company.nil?
+                redirect_to user_path(current_user), alert: "Company not found."
+            else
+                @contact = @company.contacts.find_by(id: params[:id])
+                redirect_to user_path(current_user), alert: "Contact not found." if @contact.nil?
+            end
+        end       
     end 
     
     def update
         @contact = Contact.find(params[:id])
         @contact.update(contact_params)
         #@contact.update(name: params[:contact][:name], photo: params[:contact][:photo], contact_type: params[:contact][:contact_type], relationship: params[:contact][:relationship], home_phone: params[:contact][:home_phone], cell_phone: params[:contact][:cell_phone], work_phone: params[:contact][:work_phone], personal_email: params[:contact][:personal_email], work_email: params[:contact][:work_email], home_address: params[:contact][:home_address], work_address: params[:contact][:work_address], contact_notes: params[:contact][:contact_notes])
-        redirect_to contact_path(@contact)
+        redirect_to company_contact_path(@contact.company, @contact)
     end 
 
     def destroy

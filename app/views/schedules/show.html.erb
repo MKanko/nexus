@@ -1,14 +1,8 @@
 <h2>Schedule for <%= @schedule.user.username %></h2>
 
-<h3>Schedule: <%= @schedule.name %></h3><br>
+    <h3>Schedule: <%= @schedule.name %></h3><br>
 
-<p>Year: <%= @schedule.year %></p>
-<p>Month: <%= @schedule.month %></p>
-<p>Day Date: <%= @schedule.day_date %></p>
-<p>Day: <%= @schedule.day_name %></p>
-<p>Hour: <%= @schedule.hour %></p>
-<p>Half Hour: <%= @schedule.half_hour %></p>
-<p>Schedule Item: <%= @schedule.schedule_item %></p>
+        <p>Schedule: <%= @schedule.schedule_type %></p><br>
 
 
 <h3>Edit this schedule: <%= link_to @schedule.name, edit_schedule_path(@schedule) %></h3>

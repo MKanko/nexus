@@ -24,6 +24,8 @@
 
     <h3>Edit this contact: <%= link_to @contact.name, edit_company_contact_path(@contact.company, @contact) %></h3>
 
+    <h3>Back To User Profile: <%= link_to @contact.company.user.username, user_path(@contact.company.user) %></h3>
+
     <%= link_to 'Delete Contact', company_contact_path, method: :delete, data: { confirm: "Are you sure?" } %>
 
     

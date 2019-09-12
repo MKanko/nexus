@@ -10,22 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_10_231105) do
+ActiveRecord::Schema.define(version: 2019_09_11_042149) do
 
   create_table "companies", force: :cascade do |t|
     t.string "company_name"
     t.integer "user_id"
     t.string "company_address"
-    t.string "company_contact"
     t.string "company_type"
-    t.string "contact_work_phone"
-    t.string "contact_cell_phone"
-    t.string "contact_email"
+    t.string "company_phone"
+    t.string "company_industry"
+    t.string "company_website"
+    t.string "company_email"
     t.text "company_notes"
-    t.text "contact_notes"
+    t.integer "primary_contact_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "primary_contact_id"
     t.index ["user_id"], name: "index_companies_on_user_id"
   end
 
@@ -42,27 +41,21 @@ ActiveRecord::Schema.define(version: 2019_09_10_231105) do
     t.string "work_email"
     t.string "home_address"
     t.string "work_address"
-    t.text "contact_notes"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.datetime "last_meeting_date"
     t.text "last_meeting_notes"
     t.boolean "primary_contact"
+    t.text "contact_notes"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["company_id"], name: "index_contacts_on_company_id"
   end
 
   create_table "schedules", force: :cascade do |t|
     t.string "name"
     t.integer "user_id"
-    t.datetime "year"
-    t.datetime "month"
-    t.datetime "day_date"
-    t.string "day_name"
-    t.datetime "hour"
-    t.datetime "half_hour"
+    t.string "schedule_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.text "schedule_item"
     t.index ["user_id"], name: "index_schedules_on_user_id"
   end
 
@@ -73,6 +66,7 @@ ActiveRecord::Schema.define(version: 2019_09_10_231105) do
     t.string "type"
     t.string "status"
     t.datetime "deadline"
+    t.datetime "date"
     t.text "notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -84,11 +78,11 @@ ActiveRecord::Schema.define(version: 2019_09_10_231105) do
     t.string "username"
     t.string "email"
     t.string "password_digest"
+    t.string "image"
+    t.string "uid"
     t.boolean "admin", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "image"
-    t.string "uid"
   end
 
 end

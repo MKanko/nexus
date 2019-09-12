@@ -13,6 +13,9 @@ class CreateContacts < ActiveRecord::Migration[5.2]
       t.string :work_email
       t.string :home_address
       t.string :work_address
+      t.datetime :last_meeting_date
+      t.text :last_meeting_notes
+      t.boolean :primary_contact
       t.text :contact_notes 
 
       t.timestamps
