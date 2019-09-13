@@ -9,8 +9,11 @@ class SchedulesController < ApplicationController
     end 
 
     def create
+        
         @schedule = Schedule.new(schedule_params)
-        return redirect_to new_schedule_path unless @schedule.save
+        #binding.pry
+        return render :new unless @schedule.save
+        #binding.pry
         redirect_to schedule_path(@schedule)
     end
     
@@ -35,7 +38,7 @@ class SchedulesController < ApplicationController
     private
 
     def schedule_params
-        params.require(:schedule).permit(:name, :type)
+        params.require(:schedule).permit(:name, :schedule_type)
     end 
 
 end
