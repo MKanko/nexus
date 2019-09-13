@@ -60,7 +60,7 @@
             <%= contact.text_field :photo %><br><br>
 
             <%= contact.label :contact_type %>
-            <%= contact.text_field :contact_type %><br><br>
+            <%= contact.select(:contact_type, Contact.type) %><br><br>
             
             <%= contact.label :relationship %>
             <%= contact.text_field :relationship %><br><br>

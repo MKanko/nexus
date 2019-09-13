@@ -17,13 +17,16 @@
   <body>
     <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <div class="container">
-        <div class="ui grey inverted menu">
-          
-        <a class="item" href="<%= root_url %>"/>Home</a>
-        <a class="item" href="<%= new_user_url %>"/>Sign Up</a>
-        <a class="item" href="<%= signin_url %>"/>Sign In</a>
+        <div class="ui grey inverted menu"> 
+
+        
+        <%= link_to "Home", root_path, class: "item" %>      
         <% if logged_in? %>
-          <%= link_to "Sign Out", logout_path, class: "item", method: "post" %> 
+                   
+            <%= link_to "Sign Out", logout_path, class: "item", method: "post" %>
+        <% else%>
+            <a class="item" href="<%= new_user_url %>"/>Sign Up</a>
+            <a class="item" href="<%= signin_url %>"/>Sign In</a>
         <% end %>
         </div>
        

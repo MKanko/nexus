@@ -24,14 +24,12 @@ class CompaniesController < ApplicationController
 
     def edit
         @company = Company.find(params[:id]) 
-        #@contact = Contact.find(params[:contact_id])
     end 
 
     def update
         #binding.pry
         @company = Company.find(params[:id])
         @company.update(company_params)
-        #@company.update(company_name: params[:company][:company_name], company_address: params[:company][:company_address], company_contact: params[:company][:company_contact], contact_position: params[:company][:contact_position], contact_work_phone: params[:company][:contact_work_phone], contact_cell_phone: params[:company][:contact_cell_phone], contact_email: params[:company][:contact_email], company_notes: params[:company][:company_notes], contact_notes: params[:company][:contact_notes], last_meeting: params[:company][:last_meeting], last_meeting_notes: params[:company][:last_meeting_notes])
         redirect_to company_path(@company)
     end 
 

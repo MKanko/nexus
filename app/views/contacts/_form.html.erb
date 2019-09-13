@@ -27,7 +27,7 @@
         <%= f.text_field :photo %><br><br>              
 
         <%= f.label :contact_type %>
-        <%= f.text_field :contact_type %><br><br>
+        <%= f.select(:contact_type, Contact.type) %><br><br>
         
         <%= f.label :relationship %>
         <%= f.text_field :relationship %><br><br>
