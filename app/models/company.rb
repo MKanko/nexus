@@ -6,8 +6,8 @@ class Company < ApplicationRecord
 
   accepts_nested_attributes_for :contacts 
 
-  # validates :company_name, presence: true
-  # validates :company_contact, presence: true 
+  validates :company_name, presence: true
+   
 
   def set_primary_contact_id(contact)
     if contact.primary_contact

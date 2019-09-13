@@ -7,20 +7,11 @@ class Contact < ApplicationRecord
     :with => /\(?[0-9]{3}\)?-[0-9]{3}-[0-9]{4}/,
     :message => "- Phone numbers must be in xxx-xxx-xxxx format."
 
-   CONTACT_TYPES = ["Lead", "Client", "Supplier"]
+   CONTACT_TYPES = ["Lead", "Client", "Supplier", "Personal"]
 
    def self.type 
     CONTACT_TYPES 
    end 
-
-
-
-    # def primary_contact=(value)
-    #     super(value)
-    #     if value == "1"
-    #         self.company.update(primary_contact_id: self.id)
-    #     #binding.pry
-    # end
    
 end
 

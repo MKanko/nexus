@@ -13,12 +13,10 @@
         <p>Company Website: <%= @company.company_website %></p>
         <p>Company Notes: <%= @company.company_notes %></p>
 
-
-
-
-
 <h3>Edit this company: <%= link_to @company.company_name, edit_company_path(@company) %></h3>
 
 <h3><%= link_to 'View Company Contacts', company_contacts_path(@company) %></h3>
+
+<h3><%= link_to 'Create a contact for this company', new_company_contact_path(@company) %></h3>
 
 <%= link_to 'Delete Company', company_path, method: :delete, data: { confirm: "Are you sure?" } %>

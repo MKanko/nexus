@@ -20,7 +20,7 @@ class ContactsController < ApplicationController
     def create        
         @contact = Contact.new(contact_params)
         return render :new unless @contact.save
-        redirect_to contact_path(@contact)
+        redirect_to company_contact_path(@contact.company, @contact)
     end 
 
     def show       
@@ -28,7 +28,6 @@ class ContactsController < ApplicationController
     end 
 
     def edit
-        #binding.pry
         if params[:company_id]
             @company = Company.find_by(id: params[:company_id])
             if @company.nil?
@@ -43,7 +42,6 @@ class ContactsController < ApplicationController
     def update
         @contact = Contact.find(params[:id])
         @contact.update(contact_params)
-        #@contact.update(name: params[:contact][:name], photo: params[:contact][:photo], contact_type: params[:contact][:contact_type], relationship: params[:contact][:relationship], home_phone: params[:contact][:home_phone], cell_phone: params[:contact][:cell_phone], work_phone: params[:contact][:work_phone], personal_email: params[:contact][:personal_email], work_email: params[:contact][:work_email], home_address: params[:contact][:home_address], work_address: params[:contact][:work_address], contact_notes: params[:contact][:contact_notes])
         redirect_to company_contact_path(@contact.company, @contact)
     end 
 

@@ -3,8 +3,11 @@ class UsersController < ApplicationController
     skip_before_action :require_login, only: [:new, :create]
 
     def index
-        # if admin && if admin_logged_in?
-        @users = User.all 
+        if current_user.admin
+            @users = User.all
+        else
+            redirect_to user_path(current_user)
+        end  
     end 
 
     def new 
@@ -19,21 +22,28 @@ class UsersController < ApplicationController
     end
     
     def show
-        @user = User.find(params[:id])         
+        if current_user.admin
+            @user = User.find(params[:id])
+        else 
+            @user = User.find(current_user.id)
+        end  
     end 
 
     def edit
-        @user = User.find(params[:id]) 
+        if current_user.admin 
+            @user = User.find(params[:id])
+        else 
+            @user = User.find(current_user.id)
+        end  
     end
 
     def update
         @user = User.find(params[:id])
-        @user.update(username: params[:user][:username], email: params[:user][:email], password: params[:user][:password]) 
+        @user.update(user_params)
         redirect_to user_path(@user)
     end 
 
     def destroy
-        # if admin && if admin_logged_in?
         User.find(params[:id]).destroy
         redirect_to users_path 
     end 
@@ -41,7 +51,7 @@ class UsersController < ApplicationController
     private
 
     def user_params
-        params.require(:user).permit(:username, :email, :password)
+        params.require(:user).permit(:username, :email, :password, :admin, :confirm_admin)
     end 
 
 end

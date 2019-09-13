@@ -11,12 +11,18 @@ class User < ApplicationRecord
     validates :username, uniqueness: true
     validates :email, presence: true
     validates :email, uniqueness: true
-    validates :password, length: { in: 6..20 }
+    validates :password, length: { in: 6..20 }, on: :create
 
-    # def self.find_or_create_by_omniauth(auth_hash)
-    #     self.where(:email => auth_hash["info"]["email"]).first_or_create do |user|
-    #         user.password = SecureRandom.hex
-    #     end
-    # end
+    validate :confirm_admin_secret
+
+    def confirm_admin_secret
+        if self.admin
+            if self.confirm_admin != ENV['ADMIN_SECRET']
+                errors.add(:admin, "Admin secret is incorrect.")
+            end 
+        end    
+    end
 
 end
+
+
