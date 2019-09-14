@@ -6,7 +6,7 @@
 
 <h2>Welcome <%= @user.username %></h2>
 
-<p><%= current_datetime %></p>
+<p><%= current_date %></p>
 
 <p>Admin: <%= @user.admin %></p>
 
@@ -14,12 +14,16 @@
 
     <div class='ui segment'>
         <ul>
-        <% @user.tasks.each do |task| %>
-            <li><%= task.date.strftime("%A %d %b %Y %l:%M %p") %></li>
-            <%= link_to task.name, task_path(task) %><br><br>                       
-        <% end %>
+            <% @user.tasks.each do |task| %>
+                <% if task.date.strftime("%A %d %b %Y") == current_date %>
+                    <li><%= task.date.strftime("%A %d %b %Y %l:%M %p") %></li>
+                    <%= link_to task.name, task_path(task) %><br><br>
+                <% end %>                       
+            <% end %>
         </ul>
     </div>
+
+    
 
     <h4>Your Schedules:</h4>
 
@@ -29,13 +33,6 @@
             <% end %>
         </ul>
 
-    <h4>Your Tasks:</h4>
-
-        <ul>
-           <% @user.tasks.each do |task| %>
-               <li><%= link_to task.name, task_path(task) %></li>
-           <% end %>
-       </ul>
 
 
 

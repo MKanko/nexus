@@ -6,9 +6,11 @@
 <p>Task: <%= @task.name %></p>
 
 <p>Type: <%= @task.task_type %></p>
-<p>Description: <%= @task.notes %></p>
+<h4>Description: <%= @task.notes %></h4><br>
 <p>Date of Task: <%= @task.date.strftime("%A %d %b %Y %l:%M %p") %></p>
-<p>Deadline: <%= @task.deadline.strftime("%A %d %b %Y %l:%M %p") %></p>
+<% if @task.deadline != nil %>
+    <p>Deadline: <%= @task.deadline.strftime("%A %d %b %Y %l:%M %p") %></p>
+<% end %>
 <p>Status: <%= @task.status %></p>
 
 

@@ -4,25 +4,25 @@
 
         <h4>Schedule Type: <%= @schedule.schedule_type %></h4>
 
-        
-
         <h4>Tasks:</h4> 
-            <div class="ui divider">
+
+            <div class="ui segment">
                 <ul>
                     <% @schedule.tasks.each do |task| %>
                         <li><%= task.date.strftime("%A %d %b %Y %l:%M %p") %></li>
                         <%= link_to task.name, task_path(task) %><br><br>                       
                     <% end %>
                 </ul>
-            </div><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-            <div>
-                <footer>
-                    <h4>Edit this: <%= link_to @schedule.name, edit_schedule_path(@schedule) %></h4>
+            </div><br>
 
-                    <% if logged_in? %>
-                        <h4><%= link_to 'Create Task', new_schedule_task_path(@schedule) %></h4><br> 
-                    <% end %>
-                </footer>
-            </div>
+    <% if logged_in? %>           
+        <button class='ui button'>
+            <%= link_to 'Edit Schedule', edit_schedule_path(@schedule) %>
+        </button>
+        <button class='ui button'>
+            <%= link_to 'Create Task', new_schedule_task_path(@schedule) %>
+        </button>
+    <% end %>
+             
 
 

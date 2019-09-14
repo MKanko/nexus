@@ -15,7 +15,7 @@
     <%= f.text_field :notes %><br><br>
     
     <%= f.label :deadline %>
-    <%= f.datetime_select :deadline, {:ampm => true} %><br><br>
+    <%= f.datetime_select(:deadline, ampm: true, include_blank: true) %><br><br>
 
     <%= f.label :date %>
     <%= f.datetime_select :date, {:ampm => true} %><br><br>
