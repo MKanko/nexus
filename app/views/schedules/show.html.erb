@@ -1,10 +1,28 @@
 <h2>Schedule for <%= @schedule.user.username %></h2>
 
-    <h3>Schedule: <%= @schedule.name %></h3><br>
+    <h3><%= @schedule.name %></h3>
 
-        <p>Schedule: <%= @schedule.schedule_type %></p><br>
+        <h4>Schedule Type: <%= @schedule.schedule_type %></h4>
+
+        
+
+        <h4>Tasks:</h4> 
+            <div class="ui divider">
+                <ul>
+                    <% @schedule.tasks.each do |task| %>
+                        <li><%= task.date.strftime("%A %d %b %Y %l:%M %p") %></li>
+                        <%= link_to task.name, task_path(task) %><br><br>                       
+                    <% end %>
+                </ul>
+            </div><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+            <div>
+                <footer>
+                    <h4>Edit this: <%= link_to @schedule.name, edit_schedule_path(@schedule) %></h4>
+
+                    <% if logged_in? %>
+                        <h4><%= link_to 'Create Task', new_schedule_task_path(@schedule) %></h4><br> 
+                    <% end %>
+                </footer>
+            </div>
 
 
-<h3>Edit this schedule: <%= link_to @schedule.name, edit_schedule_path(@schedule) %></h3>
-
-<h3>Back To User Profile: <%= link_to @schedule.user.username, user_path(@schedule.user) %></h3>

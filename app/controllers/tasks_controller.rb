@@ -6,11 +6,11 @@ class TasksController < ApplicationController
 
     def new 
         @task = Task.new(schedule_id: params[:schedule_id])
-        @schedule = Schedule.find(params[:schedule_id])
     end 
 
     def create 
-        @task = Task.new(task_params)
+        @task = Task.new(task_params) 
+        #binding.pry
         return render :new unless @task.save
         redirect_to task_path(@task)
     end 
@@ -36,7 +36,7 @@ class TasksController < ApplicationController
     private
 
     def task_params
-        params.require(:task).permit(:name, :task_type, :status, :deadline, :notes, :date, :schedule_id)
+        params.require(:task).permit(:name, :task_type, :status, :deadline, :notes, :date, :schedule_id, :company_id)
     end 
         
 end
