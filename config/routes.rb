@@ -11,9 +11,13 @@ Rails.application.routes.draw do
     resources :companies do
         resources :contacts
     end 
+
+    resources :schedules do
+        resources :tasks, only: [:new]
+    end 
     
     resources :users
     resources :schedules
-    resources :tasks
+    resources :tasks, except: [:new]
     
 end

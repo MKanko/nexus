@@ -5,7 +5,8 @@ class TasksController < ApplicationController
     end 
 
     def new 
-        @task = Task.new
+        @task = Task.new(schedule_id: params[:schedule_id])
+        @schedule = Schedule.find(params[:schedule_id])
     end 
 
     def create 

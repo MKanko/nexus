@@ -51,7 +51,7 @@
     <% end %>
 
     <% if logged_in? %>
-        <%= link_to 'Create Task', new_task_path %><br> 
+        <%= link_to 'Create Task', new_schedule_task_path(@task.schedule, @task) %><br> 
     <% end %>
 
   
