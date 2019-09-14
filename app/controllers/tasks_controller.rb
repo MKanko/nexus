@@ -10,7 +10,7 @@ class TasksController < ApplicationController
 
     def create 
         @task = Task.new(task_params)
-        return redirect_to new_task_path unless @task.save
+        return render :new unless @task.save
         redirect_to task_path(@task)
     end 
 
@@ -35,7 +35,7 @@ class TasksController < ApplicationController
     private
 
     def task_params
-        params.require(:task).permit(:name, :schedule_name, :company_company_name, :type, :status, :deadline, :notes)
+        params.require(:task).permit(:name, :task_type, :status, :deadline, :notes, :date, :schedule_id)
     end 
         
 end

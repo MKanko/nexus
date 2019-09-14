@@ -1,23 +1,25 @@
-<%= form_for @task do |f| %>
+<%= form_for [@schedule, @task] do |f| %>
+
+    <%= f.hidden_field :schedule_id, value: @task.schedule.id %>
 
     <%= f.label :name %>
     <%= f.text_field :name %><br><br>
 
-    <%= f.label :type %>
-    <%= f.text_field :type %><br><br>
+    <%= f.label :task_type %>
+    <%= f.text_field :task_type %><br><br>
 
     <%= f.label :Description %>
     <%= f.text_field :notes %><br><br>
     
     <%= f.label :deadline %>
-    <%= f.datetime_select :deadline %><br><br>
+    <%= f.datetime_select :deadline, {:ampm => true} %><br><br>
 
     <%= f.label :date %>
-    <%= f.datetime_select :date %><br><br>
-
+    <%= f.datetime_select :date, {:ampm => true} %><br><br>
 
     <%= f.label :status %>
     <%= f.text_field :status %><br><br>
 
     <%= f.submit 'Submit' %>
+
 <% end %>
