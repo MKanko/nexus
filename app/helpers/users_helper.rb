@@ -2,7 +2,6 @@ module UsersHelper
 
     def current_datetime
         time = Time.new
-        time.strftime("%a %m %e %Y")
-         
+        time.strftime("%A %d %b %Y %l:%M %p")        
     end
 end
