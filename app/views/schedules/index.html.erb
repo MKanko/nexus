@@ -1,8 +1,9 @@
 <h4>Your Schedules:</h4>
-
+    <div class='ui blue segment'
         <ul>
             <% current_user.schedules.each do |sched| %>
                 <li><%= link_to sched.name, schedule_path(sched) %></li>
             <% end %>
         </ul>
+    </div>
     

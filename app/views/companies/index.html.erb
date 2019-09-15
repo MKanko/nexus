@@ -1,9 +1,19 @@
-<h2>All Companies In Database</h2>
+<% if !params[:company_type].blank? %>
+    <% @companies = current_user.companies.where(company_type: params[:company_type]) %>
+<% else%>
+    <% @companies = current_user.companies %>
+<% end %>
 
-    <ul>
-        <% @companies.each do |company| %>
-            <li><%= link_to company.company_name, company_path(company) %></li>
-        <% end %>
-    </ul>
+<h3>User: <%= current_user.username %></h3>
+
+<h3>Your Companies</h3>
+
+    <div class='ui blue segment'>
+        <ul>
+            <% @companies.each do |company| %>
+                <li><%= link_to company.company_name, company_path(company) %></li>
+            <% end %>
+        </ul>
+    </div>
 
     

@@ -1,22 +1,30 @@
-<h2><%= @company.user.username %></h2>
+<h3>User: <%= @company.user.username %></h3>
 
     <h3>Company: <%= @company.company_name %></h3><br>
 
+    <div class='ui blue segment'>
         <p>Company Address: <%= @company.company_address %></p>
-
         <p><%= sanitize(display_primary_contact) %></p>
-
         <p>Company Type: <%= @company.company_type %></p>
         <p>Company Phone: <%= @company.company_phone %></p>
         <p>Company Industry: <%= @company.company_industry %></p>
         <p>Company Email: <%= @company.company_email %></p>
         <p>Company Website: <%= @company.company_website %></p>
         <p>Company Notes: <%= @company.company_notes %></p>
+    </div>
 
-<h3>Edit this company: <%= link_to @company.company_name, edit_company_path(@company) %></h3>
+    <div class='ui button'>
+        <%= link_to 'Edit Company', edit_company_path(@company) %>
+    </div>
 
-<h3><%= link_to 'View Company Contacts', company_contacts_path(@company) %></h3>
+    <div class='ui button'>
+        <%= link_to 'View Company Contacts', company_contacts_path(@company) %>
+    </div>
 
-<h3><%= link_to 'Create a contact for this company', new_company_contact_path(@company) %></h3>
-
-<%= link_to 'Delete Company', company_path, method: :delete, data: { confirm: "Are you sure?" } %>
+    <div class='ui button'>
+        <%= link_to 'Create Company Contact', new_company_contact_path(@company) %>
+    </div>
+    
+    <div class='ui button'>
+        <%= link_to 'Delete Company', company_path, method: :delete, data: { confirm: "Are you sure?" } %>
+    </div>

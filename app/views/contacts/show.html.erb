@@ -1,31 +1,39 @@
-<h2>User: <%= @contact.company.user.username %></h2>
+<h3>User: <%= @contact.company.user.username %></h3>
 
-    <h3>Contact: <%= @contact.name %></h3><br>
+    <h4>Contact: <%= @contact.name %></h4>
 
     <h4>Company: <%= link_to @contact.company.company_name, company_path(@contact.company) %></h4>
 
-    <p>Photo: <%= @contact.photo %></p>
-    <p>Contact Type: <%= @contact.contact_type %></p>
+    <div class='ui blue segment'>
+        <p>Photo: <%= @contact.photo %></p>
+        <p>Contact Type: <%= @contact.contact_type %></p>
 
-    <p>Relationship: <%= @contact.relationship %></p>
+        <p>Relationship: <%= @contact.relationship %></p>
 
-    <p>Home Phone: <%= @contact.home_phone %></p>
-    <p>Cell Phone: <%= @contact.cell_phone %></p>
-    <p>Work Phone: <%= @contact.work_phone %></p>
-    <p>Personal Email: <%= @contact.personal_email %></p>
-    <p>Work Email: <%= @contact.work_email %></p>
-    <p>Home Address: <%= @contact.home_address %></p>
-    <p>Work Address: <%= @contact.work_address %></p><br>
-    <% if @contact.last_meeting_date != nil %>
-        <p>Last Meeting Date: <%= @contact.last_meeting_date.strftime("%A %d %b %Y %l:%M %p") %></p><br>
-    <% end %>
-    <p>Last Meeting Notes: <%= @contact.last_meeting_notes %></p>
+        <p>Home Phone: <%= @contact.home_phone %></p>
+        <p>Cell Phone: <%= @contact.cell_phone %></p>
+        <p>Work Phone: <%= @contact.work_phone %></p>
+        <p>Personal Email: <%= @contact.personal_email %></p>
+        <p>Work Email: <%= @contact.work_email %></p>
+        <p>Home Address: <%= @contact.home_address %></p>
+        <p>Work Address: <%= @contact.work_address %></p>
 
-    <p>Contact Notes: <%= @contact.contact_notes %></p>
+        <% if @contact.last_meeting_date != nil %>
+            <p>Last Meeting Date: <%= @contact.last_meeting_date.strftime("%A %d %b %Y %l:%M %p") %></p>
+        <% end %>
 
-    <h3>Edit this contact: <%= link_to @contact.name, edit_company_contact_path(@contact.company, @contact) %></h3>
+        <p>Last Meeting Notes: <%= @contact.last_meeting_notes %></p>
 
-    <%= link_to 'Delete Contact', company_contact_path, method: :delete, data: { confirm: "Are you sure?" } %>
+        <p>Contact Notes: <%= @contact.contact_notes %></p>
+    </div>
+
+    <div class='ui button'>
+        <%= link_to 'Edit Contact', edit_company_contact_path(@contact.company, @contact) %>
+    </div>
+
+    <div class='ui button'>
+        <%= link_to 'Delete Contact', company_contact_path, method: :delete, data: { confirm: "Are you sure?" } %>
+    </div>
 
     
     

@@ -8,6 +8,12 @@ module UsersHelper
     def current_date
         time = Time.new
         time.strftime("%A %d %b %Y")
-    end     
+    end 
+    
+    def sort_user_tasks
+        @user.tasks.sort_by do |task|
+            task.date 
+        end 
+    end
 
 end

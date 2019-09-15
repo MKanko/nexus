@@ -1,103 +1,109 @@
 
-    <% if @company.errors.any? %>
-        <div id="error_explanation">
-            <h2>
-            <%= pluralize(@company.errors.count, "error") %>
-            prohibited this company from being saved:
-            </h2>
-        
-            <ul>
-            <% @company.errors.full_messages.each do |msg| %>
-            <li><%= msg %></li>
-            <% end %>
-            </ul>
-        </div>
-    <% end %>
-
-    <h3>Company</h3>
-
-    <%= form_for @company do |f| %>
+<% if @company.errors.any? %>
+    <div id="error_explanation">
+        <h2>
+        <%= pluralize(@company.errors.count, "error") %>
+        prohibited this company from being saved:
+        </h2>
     
-    <%= f.hidden_field :user_id, value: current_user.id %><br><br>
-    
-    <%= f.label :company_name %>
-    <%= f.text_field :company_name %><br><br>
-
-    <%= f.label :company_address %>
-    <%= f.text_field :company_address %><br><br>
-
-    <%= f.label :company_type %>
-    <%= f.text_field :company_type %><br><br>
-
-    <%= f.label :company_phone %>
-    <%= f.text_field :company_phone %><br><br>
-
-    <%= f.label :company_industry %>
-    <%= f.text_field :company_industry %><br><br>
-
-    <%= f.label :company_email %>
-    <%= f.text_field :company_email %><br><br>
-
-    <%= f.label :company_notes %>
-    <%= f.text_area :company_notes %><br><br>
-
-    <%= f.label :company_website %>
-    <%= f.text_field :company_website %><br><br>
-
-    <% if !is_edit %>
-
-        <h3>Contact:</h3>
-
-        <%= f.fields_for :contacts do |contact| %>
-
-            <%= contact.label :name %>
-            <%= contact.text_field :name %><br><br>
-
-            <%= contact.label :primary_contact %>
-            <%= contact.check_box :primary_contact %><br><br>
-
-            <%= contact.label :photo %>
-            <%= contact.text_field :photo %><br><br>
-
-            <%= contact.label :contact_type %>
-            <%= contact.select(:contact_type, Contact.type) %><br><br>
-            
-            <%= contact.label :relationship %>
-            <%= contact.text_field :relationship %><br><br>
-
-            <%= contact.label :home_phone %>
-            <%= contact.text_field :home_phone %><br><br>
-
-            <%= contact.label :cell_phone %>
-            <%= contact.text_field :cell_phone %><br><br>
-
-            <%= contact.label :work_phone %>
-            <%= contact.text_field :work_phone %><br><br>    
-
-            <%= contact.label :personal_email %>
-            <%= contact.text_field :personal_email %><br><br>
-
-            <%= contact.label :work_email %>
-            <%= contact.text_field :work_email %><br><br>
-
-            <%= contact.label :home_address %>
-            <%= contact.text_field :home_address %><br><br>
-
-            <%= contact.label :work_address %>
-            <%= contact.text_field :work_address %><br><br>
-
-            <%= contact.label :contact_notes %>
-            <%= contact.text_area :contact_notes %><br><br>
-
-            <%= contact.label :last_meeting_date %>
-            <%= contact.datetime_select(:last_meeting_date, ampm: true, include_blank: true) %><br><br>
-
-            <%= contact.label :last_meeting_notes %>
-            <%= contact.text_area :last_meeting_notes %><br><br>
-
+        <ul>
+        <% @company.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
         <% end %>
-    <% end %>
-
-    <%= f.submit 'Submit' %><br>
+        </ul>
+    </div>
 <% end %>
+
+<div class='ui blue segment'>
+    
+
+    <h3>Company:</h3>
+
+        <%= form_for @company do |f| %>
+        
+            <%= f.hidden_field :user_id, value: current_user.id %><br><br>
+            
+            <%= f.label :company_name %>
+            <%= f.text_field :company_name %><br><br>
+
+            <%= f.label :company_address %>
+            <%= f.text_field :company_address %><br><br>
+
+            <%= f.label :company_type %>
+            <%= f.select(:company_type, Company.type) %><br><br>
+
+            <%= f.label :company_phone %>
+            <%= f.text_field :company_phone %><br><br>
+
+            <%= f.label :company_industry %>
+            <%= f.text_field :company_industry %><br><br>
+
+            <%= f.label :company_email %>
+            <%= f.text_field :company_email %><br><br>
+
+            <%= f.label :company_notes %>
+            <%= f.text_area :company_notes %><br><br>
+
+            <%= f.label :company_website %>
+            <%= f.text_field :company_website %><br><br>
+
+
+
+            <% if !is_edit %>
+
+                <h3>Contact:</h3>
+
+                    <%= f.fields_for :contacts do |contact| %>
+
+                        <%= contact.label :name %>
+                        <%= contact.text_field :name %><br><br>
+
+                        <%= contact.label :primary_contact %>
+                        <%= contact.check_box :primary_contact %><br><br>
+
+                        <%= contact.label :photo %>
+                        <%= contact.text_field :photo %><br><br>
+
+                        <%= contact.label :contact_type %>
+                        <%= contact.select(:contact_type, Contact.type) %><br><br>
+                        
+                        <%= contact.label :relationship %>
+                        <%= contact.text_field :relationship %><br><br>
+
+                        <%= contact.label :home_phone %>
+                        <%= contact.text_field :home_phone %><br><br>
+
+                        <%= contact.label :cell_phone %>
+                        <%= contact.text_field :cell_phone %><br><br>
+
+                        <%= contact.label :work_phone %>
+                        <%= contact.text_field :work_phone %><br><br>    
+
+                        <%= contact.label :personal_email %>
+                        <%= contact.text_field :personal_email %><br><br>
+
+                        <%= contact.label :work_email %>
+                        <%= contact.text_field :work_email %><br><br>
+
+                        <%= contact.label :home_address %>
+                        <%= contact.text_field :home_address %><br><br>
+
+                        <%= contact.label :work_address %>
+                        <%= contact.text_field :work_address %><br><br>
+
+                        <%= contact.label :contact_notes %>
+                        <%= contact.text_area :contact_notes %><br><br>
+
+                        <%= contact.label :last_meeting_date %>
+                        <%= contact.datetime_select(:last_meeting_date, ampm: true, include_blank: true) %><br><br>
+
+                        <%= contact.label :last_meeting_notes %>
+                        <%= contact.text_area :last_meeting_notes %><br><br>
+
+                    <% end %>           
+            <% end %>
+        <%= f.submit 'Submit' %><br>    
+    <% end %>
+    
+</div>
 

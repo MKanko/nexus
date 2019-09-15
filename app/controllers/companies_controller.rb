@@ -1,7 +1,7 @@
 class CompaniesController < ApplicationController
 
     def index
-        @companies = Company.all 
+        @company = Company.find_by(id: params[:company_id]) 
     end 
 
     def new

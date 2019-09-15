@@ -1,14 +1,14 @@
-<h2>Schedule for <%= @schedule.user.username %></h2>
+<h3>Schedule for <%= @schedule.user.username %></h3>
 
-    <h3><%= @schedule.name %></h3>
+    <h4><%= @schedule.name %> <%= current_date %></h4>
 
         <h4>Schedule Type: <%= @schedule.schedule_type %></h4>
 
         <h4>Tasks:</h4> 
 
-            <div class="ui segment">
+            <div class="ui blue segment">
                 <ul>
-                    <% @schedule.tasks.each do |task| %>
+                    <% sort_tasks.each do |task| %>
                         <li><%= task.date.strftime("%A %d %b %Y %l:%M %p") %></li>
                         <%= link_to task.name, task_path(task) %><br><br>                       
                     <% end %>

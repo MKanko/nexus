@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 
     resources :schedules do
         resources :tasks, only: [:new]
-    end
+    end 
     
     resources :users
     resources :schedules
