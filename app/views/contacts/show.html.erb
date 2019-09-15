@@ -16,8 +16,9 @@
     <p>Work Email: <%= @contact.work_email %></p>
     <p>Home Address: <%= @contact.home_address %></p>
     <p>Work Address: <%= @contact.work_address %></p><br>
-
-    <p>Last Meeting Date: <%= @contact.last_meeting_date.strftime("%A %d %b %Y %l:%M %p") %></p><br>
+    <% if @contact.last_meeting_date != nil %>
+        <p>Last Meeting Date: <%= @contact.last_meeting_date.strftime("%A %d %b %Y %l:%M %p") %></p><br>
+    <% end %>
     <p>Last Meeting Notes: <%= @contact.last_meeting_notes %></p>
 
     <p>Contact Notes: <%= @contact.contact_notes %></p>

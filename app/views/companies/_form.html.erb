@@ -90,7 +90,7 @@
             <%= contact.text_area :contact_notes %><br><br>
 
             <%= contact.label :last_meeting_date %>
-            <%= contact.datetime_select :last_meeting_date, {:ampm => true} %><br><br>
+            <%= contact.datetime_select(:last_meeting_date, ampm: true, include_blank: true) %><br><br>
 
             <%= contact.label :last_meeting_notes %>
             <%= contact.text_area :last_meeting_notes %><br><br>

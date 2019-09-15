@@ -12,7 +12,7 @@
 
 <h4>Your work schedule for today:</h4>
 
-    <div class='ui segment'>
+    <div class='ui blue segment'>
         <ul>
             <% @user.tasks.each do |task| %>
                 <% if task.date.strftime("%A %d %b %Y") == current_date %>
@@ -23,32 +23,32 @@
         </ul>
     </div>
 
-    
+<h4>Your Companies:</h4>
 
-    <h4>Your Schedules:</h4>
-
+    <div class='ui blue segment'>
         <ul>
-            <% @user.schedules.each do |sched| %>
-                <li><%= link_to sched.name, schedule_path(sched) %></li>
+            <% @user.companies.each do |company| %>
+                    <li><%= link_to company.company_name, company_path(company) %></li>                       
             <% end %>
         </ul>
+    </div>
 
-
-
+    
 
 
     <% if logged_in? %>
-        <%= link_to 'Edit User', edit_user_path %><br> 
-    <% end %>
-
-    <% if logged_in? %>
-        <%= link_to 'Create Company', new_company_path %><br>
-    <% end %>
-
-   
-
-    <% if logged_in? %>
-        <%= link_to 'Create Schedule', new_schedule_path %><br> 
+        <div class='ui button'>
+            <%= link_to 'Edit User', edit_user_path %><br> 
+        </div>
+        <div class='ui button'>
+            <%= link_to 'Create Company', new_company_path %><br>
+        </div>
+        <div class='ui button'>
+            <%= link_to 'Create Schedule', new_schedule_path %><br> 
+        </div>
+        <div class='ui button'>
+            <%= link_to 'View Schedules', schedules_path(@user.schedules) %>
+        </div>
     <% end %>
 
    
