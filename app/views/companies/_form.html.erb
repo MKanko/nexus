@@ -16,7 +16,6 @@
 
 <div class='ui blue segment'>
     
-
     <h3>Company:</h3>
 
         <%= form_for @company do |f| %>
@@ -47,8 +46,6 @@
             <%= f.label :company_website %>
             <%= f.text_field :company_website %><br><br>
 
-
-
             <% if !is_edit %>
 
                 <h3>Contact:</h3>
@@ -60,9 +57,6 @@
 
                         <%= contact.label :primary_contact %>
                         <%= contact.check_box :primary_contact %><br><br>
-
-                        <%= contact.label :photo %>
-                        <%= contact.text_field :photo %><br><br>
 
                         <%= contact.label :contact_type %>
                         <%= contact.select(:contact_type, Contact.type) %><br><br>

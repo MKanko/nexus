@@ -1,10 +1,8 @@
 class ContactsController < ApplicationController
 
-    def index 
-        #binding.pry
-        @company = Company.find_by(id: params[:company_id])      
-        @contacts = @company.contacts
-                 
+    def index        
+            @company = Company.find_by(id: params[:company_id])      
+            @contacts = @company.contacts            
     end
 
     def new 

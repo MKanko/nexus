@@ -1,28 +1,31 @@
-<%= form_for @task do |f| %>
 
-    <%= f.hidden_field :schedule_id, value: @task.schedule.id  %>
+<div class='ui blue segment'>
+    <%= form_for @task do |f| %>
 
-    <%= f.label :name %>
-    <%= f.text_field :name %><br><br>
+        <%= f.hidden_field :schedule_id, value: @task.schedule.id  %>
 
-    <%= f.label :Company %>
-    <%= f.collection_select :company_id, current_user.companies.all, :id, :company_name %><br><br>
+        <%= f.label :name %>
+        <%= f.text_field :name %><br><br>
 
-    <%= f.label :task_type %>
-    <%= f.text_field :task_type %><br><br>
+        <%= f.label :Company %>
+        <%= f.collection_select :company_id, current_user.companies.all, :id, :company_name %><br><br>
 
-    <%= f.label :Description %>
-    <%= f.text_field :notes %><br><br>
-    
-    <%= f.label :deadline %>
-    <%= f.datetime_select(:deadline, ampm: true, include_blank: true) %><br><br>
+        <%= f.label :task_type %>
+        <%= f.text_field :task_type %><br><br>
 
-    <%= f.label :date %>
-    <%= f.datetime_select :date, {:ampm => true} %><br><br>
+        <%= f.label :Description %>
+        <%= f.text_field :notes %><br><br>
+        
+        <%= f.label :deadline %>
+        <%= f.datetime_select(:deadline, ampm: true, include_blank: true) %><br><br>
 
-    <%= f.label :status %>
-    <%= f.text_field :status %><br><br>
+        <%= f.label :date %>
+        <%= f.datetime_select :date, {:ampm => true} %><br><br>
 
-    <%= f.submit 'Submit' %>
+        <%= f.label :status %>
+        <%= f.text_field :status %><br><br>
 
-<% end %>
+        <%= f.submit 'Submit' %>
+
+    <% end %>
+</div>

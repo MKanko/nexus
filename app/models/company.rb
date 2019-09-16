@@ -16,7 +16,7 @@ class Company < ApplicationRecord
     end 
   end 
 
-  COMPANY_TYPES = ["Lead", "Client", "Supplier", "Subcontractor", "My Company"]
+  COMPANY_TYPES = ["Client", "Customer", "Supplier", "Subcontractor", "Collaborative", "My Company"]
 
    def self.type 
     COMPANY_TYPES 

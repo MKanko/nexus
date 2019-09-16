@@ -29,6 +29,9 @@
                     <%= submit_tag "Search" %>
                 <% end %>
             </ul>
+            <div class='mini ui button'>
+                <%= link_to 'All', companies_path(@user.companies) %>
+            </div>
         </div>
 
         <% if logged_in? %>
@@ -42,9 +45,8 @@
                 <%= link_to 'Create Schedule', new_schedule_path %><br> 
             </div>
             <div class='ui button'>
-                <%= link_to 'View Schedules', schedules_path(@user.schedules) %>
-            </div>
-
+                <%= link_to 'View Schedules', schedules_path %>
+            </div>                    
         <% end %>
 
         <% if current_user.admin %>
