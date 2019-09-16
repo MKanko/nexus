@@ -1,8 +1,8 @@
 class Company < ApplicationRecord
   belongs_to :user
-  has_many :contacts
-  has_many :tasks
-  has_many :schedules, through: :tasks
+  has_many :contacts, :dependent => :destroy
+  has_many :tasks, :dependent => :destroy
+  has_many :schedules, through: :tasks, :dependent => :destroy
 
   accepts_nested_attributes_for :contacts 
 

@@ -2,10 +2,10 @@ class User < ApplicationRecord
 
     has_secure_password 
 
-    has_many :companies 
-    has_many :contacts, through: :companies
-    has_many :schedules
-    has_many :tasks, through: :schedules
+    has_many :companies, :dependent => :destroy 
+    has_many :contacts, through: :companies, :dependent => :destroy
+    has_many :schedules, :dependent => :destroy
+    has_many :tasks, through: :schedules, :dependent => :destroy
 
     validates :username, presence: true
     validates :username, uniqueness: true
