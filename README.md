@@ -1,24 +1,30 @@
-# README
+Nexus: (Rails App)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A basic Contacts/Multi-Purpose CRM app for a user to manage/track companies, contacts, tasks and work schedules.
+_________________________________________________________________
 
-Things you may want to cover:
+Installation and Start:
 
-* Ruby version
+1) Fork and clone this repo.
+2) Run bundle install to install required gems.
+3) Run rake db:migrate to migrate tables and set up the data base.
+4) Run shotgun and navigate to localhost:9393
+___________________________________________________________________
 
-* System dependencies
+Contributors Guide:
 
-* Configuration
+Did you find a bug?
+Ensure the bug was not already reported by searching on GitHub under Issues.
 
-* Database creation
+If you're unable to find an open issue addressing the problem, open a new one. Be sure to include a title and clear description, as much relevant information as possible, and a code sample or an executable test case demonstrating the expected behavior that is not occurring.
 
-* Database initialization
+Did you write a patch that fixes a bug?
+Open a new GitHub pull request with the patch.
 
-* How to run the test suite
+Ensure the PR description clearly describes the problem and solution. Include the relevant issue number if applicable.
+______________________________________________________________________________________________________________________
 
-* Services (job queues, cache servers, search engines, etc.)
+This project has been licensed under the MIT open source license:
 
-* Deployment instructions
+https://github.com/MKanko/Nexus/blob/master/LICENSE.md
 
-* ...
