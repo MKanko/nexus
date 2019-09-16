@@ -2,10 +2,9 @@
     <img src=<%= @user.image %>/>
 <% end %>
 
-<h2>Welcome <%= @user.username %></h2>
+<h3>Welcome <%= @user.username %></h3>
 
     <p><%= current_date %></p>
-    <p>Admin: <%= @user.admin %></p>
 
     <h4>Your work schedule for today:</h4>
 
@@ -45,7 +44,16 @@
             <div class='ui button'>
                 <%= link_to 'View Schedules', schedules_path(@user.schedules) %>
             </div>
+
         <% end %>
+
+        <% if current_user.admin %>
+            <div class='ui button'>
+                <%= link_to 'All Users', users_path %>
+            </div><br><br>            
+        <% end %>
+
+        <p>Admin: <%= @user.admin %></p>
 
    
 
