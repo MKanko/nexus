@@ -5,11 +5,8 @@
     <h4>Company: <%= link_to @contact.company.company_name, company_path(@contact.company) %></h4>
 
     <div class='ui blue segment'>
-        <p>Photo: <%= @contact.photo %></p>
         <p>Contact Type: <%= @contact.contact_type %></p>
-
         <p>Relationship: <%= @contact.relationship %></p>
-
         <p>Home Phone: <%= @contact.home_phone %></p>
         <p>Cell Phone: <%= @contact.cell_phone %></p>
         <p>Work Phone: <%= @contact.work_phone %></p>

@@ -29,9 +29,6 @@
         <%= f.label :relationship %>
         <%= f.text_field :relationship %><br><br>
 
-        <%= f.label :home_phone %>
-        <%= f.text_field :home_phone %><br><br>
-
         <%= f.label :cell_phone %>
         <%= f.text_field :cell_phone %><br><br>
 
@@ -51,7 +48,7 @@
         <%= f.text_field :work_address %><br><br>
 
         <%= f.label :last_meeting_date %>
-        <%= f.datetime_select :last_meeting_date, {:ampm => true} %><br><br>
+        <%= f.datetime_select(:last_meeting_date, ampm: true, include_blank: true) %><br><br>
 
         <%= f.label :last_meeting_notes %>
         <%= f.text_area :last_meeting_notes %><br><br>
