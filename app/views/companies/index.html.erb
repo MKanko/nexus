@@ -1,8 +1,3 @@
-<% if !params[:company_type].blank? %>
-    <% @companies = current_user.companies.where(company_type: params[:company_type]) %>
-<% else%>
-    <% @companies = current_user.companies %>
-<% end %>
 
 <h3>User: <%= current_user.username %></h3>
 

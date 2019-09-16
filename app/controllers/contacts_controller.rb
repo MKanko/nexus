@@ -1,14 +1,17 @@
 class ContactsController < ApplicationController
 
-    def index        
+    def index
+        if params[:company_id] && !Company.exists?(params[:company_id])
+            redirect_to user_path(current_user), alert: "Company not found!"
+        else        
             @company = Company.find_by(id: params[:company_id])      
-            @contacts = @company.contacts            
+            @contacts = @company.contacts 
+        end            
     end
 
     def new 
-        #binding.pry
         if params[:company_id] && !Company.exists?(params[:company_id])
-            redirect_to user_path(current_user), alert: "Company not found."
+            redirect_to user_path(current_user), alert: "Company not found!" 
         else 
             @contact = Contact.new(company_id: params[:company_id])
             @company = Company.find(params[:company_id])
@@ -21,8 +24,12 @@ class ContactsController < ApplicationController
         redirect_to company_contact_path(@contact.company, @contact)
     end 
 
-    def show       
-        @contact = Contact.find(params[:id])       
+    def show
+        if params[:company_id] && !Company.exists?(params[:company_id])
+            redirect_to user_path(current_user), alert: "Company not found!"
+        else        
+            @contact = Contact.find(params[:id])
+        end       
     end 
 
     def edit
@@ -44,8 +51,12 @@ class ContactsController < ApplicationController
     end 
 
     def destroy
-        Contact.find(params[:id]).destroy
-        redirect_to user_path(current_user)
+        if params[:company_id] && !Company.exists?(params[:company_id])
+            redirect_to user_path(current_user), alert: "Company not found!"
+        else 
+            Contact.find(params[:id]).destroy
+            redirect_to user_path(current_user)
+        end 
     end 
 
     private

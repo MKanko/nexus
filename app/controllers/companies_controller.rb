@@ -1,7 +1,11 @@
 class CompaniesController < ApplicationController
 
     def index
-        @company = Company.find_by(id: params[:company_id]) 
+         if !params[:company_type].blank? 
+             @companies = current_user.companies.where(company_type: params[:company_type]) 
+         else
+             @companies = current_user.companies 
+         end 
     end 
 
     def new
