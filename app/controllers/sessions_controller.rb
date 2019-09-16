@@ -24,17 +24,6 @@ class SessionsController < ApplicationController
         end 
     end 
 
-            #@user = User.find_or_create_by_omniauth(auth_hash)
-
-            # oauth_email = request.env["omniauth.auth"]["email"]
-            # if @user = User.find_by(:email => oauth_email)
-            #     session[:user_id] = @user.id 
-            # else 
-            #     @user = User.create(:email => oauth_email)
-            #     session[:user_id] = @user.id               
-            #     redirect_to '/auth/facebook/callback'
-            # end}
-
     def destroy
         session.destroy  
         redirect_to '/'

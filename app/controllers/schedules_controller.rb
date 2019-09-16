@@ -33,6 +33,7 @@ class SchedulesController < ApplicationController
 
     def destroy
         Schedule.find(params[:id]).destroy
+        redirect_to user_path(current_user)
     end 
 
     private

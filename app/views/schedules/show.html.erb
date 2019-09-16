@@ -22,6 +22,9 @@
         <button class='ui button'>
             <%= link_to 'Create Task', new_schedule_task_path(@schedule) %>
         </button>
+        <div class='ui button'>
+            <%= link_to 'Delete Schedule', @schedule, method: :delete, data: { confirm: "Are you sure?" } %>
+        </div>
     <% end %>
              
 
