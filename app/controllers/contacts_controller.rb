@@ -15,13 +15,15 @@ class ContactsController < ApplicationController
         else 
             @contact = Contact.new(company_id: params[:company_id])
             @company = Company.find(params[:company_id])
+            #@contact = @company.contacts.build
         end         
     end  
 
     def create        
         @contact = Contact.new(contact_params)
+        @company = @contact.company
         return render :new unless @contact.save
-        redirect_to company_contact_path(@contact.company, @contact)
+        redirect_to company_contact_path(@company, @contact)
     end 
 
     def show
