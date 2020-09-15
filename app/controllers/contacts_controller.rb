@@ -5,7 +5,7 @@ class ContactsController < ApplicationController
             redirect_to user_path(current_user), alert: "Company not found!"
         else        
             @company = Company.find_by(id: params[:company_id])      
-            @contacts = @company.contacts 
+            @contacts = @company.contacts     
         end            
     end
 
@@ -46,7 +46,7 @@ class ContactsController < ApplicationController
         end       
     end 
     
-    def update
+    def update 
         @contact = Contact.find(params[:id])
         @contact.update(contact_params)
         redirect_to company_contact_path(@contact.company, @contact)

@@ -1,9 +1,9 @@
 class CreateSchedules < ActiveRecord::Migration[5.2]
   def change
     create_table :schedules do |t|
-      t.string :name
+      t.text :name
       t.belongs_to :user, foreign_key: true
-      t.string :type
+      t.text :type
 
       t.timestamps
     end

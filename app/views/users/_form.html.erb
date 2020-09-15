@@ -14,23 +14,24 @@
         </div>
     <% end %>
 
-    <%= form_for @user do |f| %>
-    
-        <%= f.label :username %>
-        <%= f.text_field :username %><br><br>
-
-        <%= f.label :email %>
-        <%= f.text_field :email %><br><br>
-
-        <%= f.label :password %>
-        <%= f.password_field :password %><br><br>
+    <div class='ui blue segment'>
+        <%= form_for @user do |f| %>
         
-        <%= f.label :admin %>
-        <%= f.check_box :admin %><br><br>
+            <%= f.label :username %>
+            <%= f.text_field :username %><br><br>
 
-        <%= f.label :confirm_admin %>
-        <%= f.text_field :confirm_admin %><br><br>
+            <%= f.label :email %>
+            <%= f.text_field :email %><br><br>
 
+            <%= f.label :password %>
+            <%= f.password_field :password %><br><br>
+            
+            <%= f.label :admin %>
+            <%= f.check_box :admin %><br><br>
 
-    <%= f.submit 'Submit User' %>
-<% end %>
+            <%= f.label :confirm_admin %>
+            <%= f.text_field :confirm_admin %><br><br>
+
+            <%= f.submit 'Submit User' %>
+        <% end %>
+    </div>

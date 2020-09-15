@@ -10,8 +10,8 @@ module UsersHelper
         time.strftime("%A %d %b %Y")
     end 
     
-    def sort_user_tasks
-        @user.tasks.sort_by do |task|
+    def sort_user_tasks(user)
+        user.tasks.sort_by do |task|
             task.date 
         end 
     end

@@ -2,7 +2,7 @@ class CompaniesController < ApplicationController
 
     def index
          if !params[:company_type].blank? 
-             @companies = current_user.companies.where(company_type: params[:company_type]) 
+             @companies = current_user.companies.by_type(params[:company_type])  #where(company_type: params[:company_type]) 
          else
              @companies = current_user.companies 
          end 

@@ -13,10 +13,10 @@
             </ul>
         </div>
     <% end %>
-
-    <%= form_for @contact, url: company_contacts_path(@company) do |f| %>
    
-        <%= f.hidden_field :company_id, value: @contact.company.id %>
+    <%= form_for [@company, @contact] do |f| %>   
+   
+        <%= f.hidden_field :company_id, value: @company.id %>
 
         <h3>Contact:</h3>
 

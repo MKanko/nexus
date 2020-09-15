@@ -5,8 +5,8 @@ module SchedulesHelper
             time.strftime("%W")
     end 
     
-    def sort_tasks
-        @schedule.tasks.sort_by do |task|
+    def sort_tasks(schedule)
+        schedule.tasks.sort_by do |task|
             task.date 
         end 
     end

@@ -8,7 +8,7 @@ Installation and Start:
 1) Fork and clone this repo.
 2) Run bundle install to install required gems.
 3) Run rake db:migrate to migrate tables and set up the data base.
-4) Run shotgun and navigate to localhost:9393
+4) Run Rails Server and navigate to localhost:3000
 ___________________________________________________________________
 
 Contributors Guide:
