@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_13_232430) do
+ActiveRecord::Schema.define(version: 2020_09_15_224754) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,6 +59,8 @@ ActiveRecord::Schema.define(version: 2019_09_13_232430) do
     t.string "schedule_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "start_date"
+    t.datetime "end_date"
     t.index ["user_id"], name: "index_schedules_on_user_id"
   end
 
@@ -68,8 +70,8 @@ ActiveRecord::Schema.define(version: 2019_09_13_232430) do
     t.integer "company_id"
     t.string "task_type"
     t.string "status"
-    t.datetime "deadline"
-    t.datetime "date"
+    t.datetime "end_time"
+    t.datetime "start_time"
     t.text "notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
