@@ -9,6 +9,7 @@ class TasksController < ApplicationController
     end 
 
     def create 
+        # binding.pry
         @task = Task.new(task_params) 
         #binding.pry
         return render :new unless @task.save
@@ -37,7 +38,7 @@ class TasksController < ApplicationController
     private
 
     def task_params
-        params.require(:task).permit(:name, :task_type, :status, :deadline, :notes, :date, :schedule_id, :company_id)
+        params.require(:task).permit(:name, :task_type, :status, :end_time, :notes, :start_time, :schedule_id, :company_id)
     end 
         
 end

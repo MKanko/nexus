@@ -14,10 +14,8 @@
     </div>
 <% end %>
 
-<div class='ui blue segment'>
-    
+<div class='ui blue segment'>  
     <h3>Company:</h3>
-
         <%= form_for @company do |f| %>
         
             <%= f.hidden_field :user_id, value: current_user.id %><br><br>
@@ -45,11 +43,12 @@
 
             <%= f.label :company_website %>
             <%= f.text_field :company_website %><br><br>
+</div>
+<div class='ui blue segment'>
 
             <% if !is_edit %>
 
                 <h3>Contact:</h3>
-
                     <%= f.fields_for :contacts do |contact| %>
 
                         <%= contact.label :name %>
@@ -93,11 +92,9 @@
 
                         <%= contact.label :last_meeting_notes %>
                         <%= contact.text_area :last_meeting_notes %><br><br>
-
                     <% end %>           
             <% end %>
         <%= f.submit 'Submit' %><br>    
-    <% end %>
-    
+    <% end %>   
 </div>
 

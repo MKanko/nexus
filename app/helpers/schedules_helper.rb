@@ -7,7 +7,7 @@ module SchedulesHelper
     
     def sort_tasks(schedule)
         schedule.tasks.sort_by do |task|
-            task.date 
+            task.start_time 
         end 
     end
 end

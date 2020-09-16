@@ -23,19 +23,19 @@
         <%= f.text_field :name %><br><br>
 
         <%= f.label :Company %>
-        <%= f.collection_select :company_id, current_user.companies.all, :id, :company_name %><br><br>
+        <%= f.collection_select :company_id, current_user.companies.all, :id, :company_name, include_blank: true %><br><br>
 
         <%= f.label :task_type %>
         <%= f.text_field :task_type %><br><br>
 
         <%= f.label :Description %>
         <%= f.text_field :notes %><br><br>
-        
-        <%= f.label :deadline %>
-        <%= f.datetime_select(:deadline, ampm: true, include_blank: true) %><br><br>
 
-        <%= f.label :date %>
-        <%= f.datetime_select :date, {:ampm => true} %><br><br>
+        <%= f.label :start_time %>
+        <%= f.datetime_select :start_time, {:ampm => true} %><br><br>
+        
+        <%= f.label :end_time %>
+        <%= f.datetime_select(:end_time, ampm: true) %><br><br>
 
         <%= f.label :status %>
         <%= f.text_field :status %><br><br>

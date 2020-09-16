@@ -11,8 +11,8 @@
         <div class='ui blue segment'>
             <ul>
                 <% sort_user_tasks(@user).each do |task| %>
-                    <% if task.date.strftime("%A %d %b %Y") == current_date %>
-                        <li><%= task.date.strftime("%A %d %b %Y %l:%M %p") %></li>
+                    <% if task.start_time.strftime("%A %d %b %Y") == current_date %>
+                        <li><%= task.start_time.strftime("%A %d %b %Y %l:%M %p") %></li>
                         <%= link_to task.name, task_path(task) %><br><br>
                     <% end %>                       
                 <% end %>
@@ -54,8 +54,10 @@
                 <%= link_to 'All Users', users_path %>
             </div><br><br>            
         <% end %>
-
-        <p>Admin: <%= @user.admin %></p>
+        
+        <% if current_user.admin %>            
+            <p>Admin: <%= @user.admin %></p>
+        <% end %>
 
    
 
