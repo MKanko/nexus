@@ -9,16 +9,27 @@
     <h4>Your work schedule for today:</h4>
 
         <div class='ui blue segment'>
-            <ul>
-                <% sort_user_tasks(@user).each do |task| %>
-                    <% if task.start_time.strftime("%A %d %b %Y") == current_date %>
-                        <li><%= task.start_time.strftime("%A %d %b %Y %l:%M %p") %></li>
-                        <%= link_to task.name, task_path(task) %><br><br>
-                    <% end %>                       
-                <% end %>
-            </ul>
-        </div>   
+            <%= calendar number_of_days: 1, events: @user.tasks do |date, tasks| %>
+                <%= date.day %>
 
+                <% tasks.each do |task| %>
+                    <div>
+                    <%= link_to task.name, task_path(task) %> -
+                    <%= task.start_time.strftime("%l:%M %p") %> - <%= task.end_time.strftime("%l:%M %p") %>
+                    </div>
+                <% end %>
+            <% end %>
+        </div>
+
+        <% if logged_in? %>
+        <div class='ui button'>
+            <%= link_to 'Create Schedule', new_schedule_path %><br> 
+        </div>
+        <div class='ui button'>
+            <%= link_to 'Your Schedules', schedules_path %>
+        </div>
+        <% end %>
+        
         <h4>Companies:</h4>
 
         <div class='ui blue segment'>
@@ -40,12 +51,6 @@
             </div>
             <div class='ui button'>
                 <%= link_to 'Create Company', new_company_path %><br>
-            </div>
-            <div class='ui button'>
-                <%= link_to 'Create Schedule', new_schedule_path %><br> 
-            </div>
-            <div class='ui button'>
-                <%= link_to 'View Schedules', schedules_path %>
             </div>                    
         <% end %>
 
