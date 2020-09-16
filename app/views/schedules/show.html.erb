@@ -2,10 +2,25 @@
 
     <h4><%= current_date %></h4>
 
-    <h4><%= @schedule.name %></h4>
-        
+    <% if @schedule.schedule_type == 'Weekly' %>
+
+        <h4><%= @schedule.name %></h4>  
+            <div class='ui blue segment'>
+                <%= week_calendar events: @schedule.tasks do |date, tasks| %>
+                    <%= date.day %>
+                    <% tasks.each do |task| %>
+                        <div>
+                            <%= link_to task.name, task_path(task) %>
+                        </div>
+                    <% end %>
+                <% end %>
+            </div>
+            
+    <% elsif @schedule.schedule_type == 'monthly' %>
+
+        <h4><%= @schedule.name %></h4>  
         <div class='ui blue segment'>
-            <%= week_calendar events: @schedule.tasks do |date, tasks| %>
+            <%= month_calendar events: @schedule.tasks do |date, tasks| %>
                 <%= date.day %>
                 <% tasks.each do |task| %>
                     <div>
@@ -14,6 +29,7 @@
                 <% end %>
             <% end %>
         </div>
+    <% end %>
 
     <% if logged_in? %>           
         <button class='ui button'>
