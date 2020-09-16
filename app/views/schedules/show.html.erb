@@ -1,6 +1,18 @@
 <h3><%= @schedule.user.username %></h3>
 
-    <h4><%= current_date %></h4>
+    <span><%= current_date %></span>
+
+    
+
+    <%= form_for @schedule do |f| %>   
+        <%= f.hidden_field :user_id, value: current_user.id %><br><br>
+
+        <%= f.label :schedule_type, 'Schedule Type' %>
+        <%= f.select(:schedule_type, Schedule.type) %>
+    
+        <%= f.submit 'Submit' %>
+    <% end %>
+
 
     <% if @schedule.schedule_type == 'Weekly' %>
 
@@ -16,7 +28,7 @@
                 <% end %>
             </div>
             
-    <% elsif @schedule.schedule_type == 'monthly' %>
+    <% elsif @schedule.schedule_type == 'Monthly' %>
 
         <h4><%= @schedule.name %></h4>  
         <div class='ui blue segment'>
