@@ -12,7 +12,7 @@ module UsersHelper
     
     def sort_user_tasks(user)
         user.tasks.sort_by do |task|
-            task.date 
+            task.start_time 
         end 
     end
 

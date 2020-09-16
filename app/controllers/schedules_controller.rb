@@ -9,11 +9,8 @@ class SchedulesController < ApplicationController
     end 
 
     def create
-        
         @schedule = Schedule.new(schedule_params)
-        #binding.pry
         return render :new unless @schedule.save
-        #binding.pry
         redirect_to schedule_path(@schedule)
     end
     
