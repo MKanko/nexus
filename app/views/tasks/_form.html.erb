@@ -32,10 +32,10 @@
         <%= f.text_field :notes %><br><br>
 
         <%= f.label :start_time %>
-        <%= f.datetime_select :start_time, {:ampm => true} %><br><br>
+        <%= f.datetime_select(:start_time, :ampm => true) %><br><br>
         
         <%= f.label :end_time %>
-        <%= f.datetime_select(:end_time, ampm: true) %><br><br>
+        <%= f.datetime_select(:end_time, ampm: true, include_blank: true) %><br><br>
 
         <%= f.label :status %>
         <%= f.text_field :status %><br><br>

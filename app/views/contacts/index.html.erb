@@ -4,14 +4,15 @@
 
 
 <h3><%= @company.company_name if @company %> Contacts:</h3>
-
-    <div>
-    <h4>Filter Contacts:</h4>
-        <%= form_tag("/companies/#{@company.id}/contacts", method: "get") do %>
-            <%= select_tag :contact_type, options_for_select(Contact.type, params[:contact_type]), include_blank: true %>
-            <%= submit_tag "Filter" %>
-        <% end %>
-    </div>
+    <% if @company %>
+        <div>
+        <h4>Filter Contacts:</h4>
+            <%= form_tag("/companies/#{@company.id}/contacts", method: "get") do %>
+                <%= select_tag :contact_type, options_for_select(Contact.type, params[:contact_type]), include_blank: true %>
+                <%= submit_tag "Filter" %>
+            <% end %>
+        </div>
+    <% end %>
 
     <div class='ui blue segment'>
         <ul>

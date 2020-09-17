@@ -1,11 +1,19 @@
 class ContactsController < ApplicationController
 
     def index
-        if params[:company_id] && !Company.exists?(params[:company_id])
-            redirect_to user_path(current_user), alert: "Company not found!"
-        else        
-            @company = Company.find_by(id: params[:company_id])      
-            @contacts = @company.contacts     
+        if !params[:contact_type].blank? && params[:company_id].blank? 
+            @contacts = current_user.contacts.where(params[:contacts_type])  #where(company_type: params[:company_type]) 
+        else
+            if params[:company_id] && !Company.exists?(params[:company_id])
+                redirect_to user_path(current_user), alert: "Company not found!"
+            else 
+                if params[:company_id]       
+                    @company = Company.find_by(id: params[:company_id])      
+                    @contacts = @company.contacts  
+                else
+                    @contacts = current_user.contacts
+                end    
+            end 
         end            
     end
 

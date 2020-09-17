@@ -1,18 +1,20 @@
 
-<h3>User: <%= current_user.username %></h3>
+<h3><%= current_user.username %></h3>
+
+<%= current_date %>
 
 <h4>Your Companies:</h4>
    
-            <% @companies.each do |company| %>
-                <div class='ui blue segment'>
-                    <h4><%= company.company_name %></h4>
-                    <%= company.company_address %>
-                    <br>
-                    <%= company.company_industry %>
-                    <br>
-                    <%= link_to 'Details', company_path(company) %> 
-                </div>
-            <% end %>
+    <% @companies.each do |company| %>
+        <div class='ui blue segment company'>
+            <h4><%= company.company_name %></h4>
+            <%= company.company_address %>
+            <br>
+            <%= company.company_industry %>
+            <br>
+            <%= link_to 'Details', company_path(company) %> 
+        </div>
+    <% end %>
         
     
 

@@ -1,6 +1,8 @@
-<h3>User: <%= @company.user.username %></h3>
+<h3><%= @company.user.username %></h3>
 
-    <h4>Company: <%= @company.company_name %></h4>
+    <%= current_date %>
+
+    <h4><%= @company.company_name %></h4>
 
     <div class='ui blue segment'>
         <p>Company Address: <%= @company.company_address %></p>

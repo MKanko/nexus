@@ -2,17 +2,14 @@
 
     <span><%= current_date %></span>
 
-    
-
     <%= form_for @schedule do |f| %>   
         <%= f.hidden_field :user_id, value: current_user.id %><br><br>
 
-        <%= f.label :schedule_type, 'Schedule Type' %>
+        <%= f.label :schedule_type, 'View Schedule Type' %>
         <%= f.select(:schedule_type, Schedule.type) %>
     
-        <%= f.submit 'Submit' %>
+        <%= f.submit 'Switch' %>
     <% end %>
-
 
     <% if @schedule.schedule_type == 'Weekly' %>
 

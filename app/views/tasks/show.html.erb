@@ -1,6 +1,8 @@
-<h3><%= @task.schedule.user.username %></h3> 
+<h3><%= @task.schedule.user.username %></h3>
 
-<h4><%= @task.schedule.name %></h4>
+<%= current_date %>
+
+<h4><%= @task.name %></h4>
 
 <div class='ui blue segment'>
     <h4>Task for <%= @task.company.company_name %></h4>

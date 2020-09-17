@@ -19,5 +19,6 @@ Rails.application.routes.draw do
     resources :users
     resources :schedules
     resources :tasks, except: [:new]
+    resources :contacts, only: [:index, :show]
     
 end

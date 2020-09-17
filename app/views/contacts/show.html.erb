@@ -1,27 +1,35 @@
-<h3>User: <%= @contact.company.user.username %></h3>
+<h3><%= @contact.company.user.username %></h3>
+
+    <%= current_date %>
+
+    <h4><%= link_to @contact.company.company_name, company_path(@contact.company) %></h4>
 
     <h4>Contact: <%= @contact.name %></h4>
 
-    <h4>Company: <%= link_to @contact.company.company_name, company_path(@contact.company) %></h4>
-
     <div class='ui blue segment'>
-        <p>Contact Type: <%= @contact.contact_type %></p>
-        <p>Relationship: <%= @contact.relationship %></p>
-        <p>Home Phone: <%= @contact.home_phone %></p>
-        <p>Cell Phone: <%= @contact.cell_phone %></p>
-        <p>Work Phone: <%= @contact.work_phone %></p>
-        <p>Personal Email: <%= @contact.personal_email %></p>
-        <p>Work Email: <%= @contact.work_email %></p>
-        <p>Home Address: <%= @contact.home_address %></p>
-        <p>Work Address: <%= @contact.work_address %></p>
-
-        <% if @contact.last_meeting_date != nil %>
-            <p>Last Meeting Date: <%= @contact.last_meeting_date.strftime("%A %d %b %Y %l:%M %p") %></p>
-        <% end %>
-
-        <p>Last Meeting Notes: <%= @contact.last_meeting_notes %></p>
-
-        <p>Contact Notes: <%= @contact.contact_notes %></p>
+        <div class='ui grid'>
+            <div class='eight wide column'> 
+                <p>Contact Type: <%= @contact.contact_type %></p>
+                <p>Relationship: <%= @contact.relationship %></p>
+                <p>Home Phone: <%= @contact.home_phone %></p>
+                <p>Cell Phone: <%= @contact.cell_phone %></p>
+                <p>Work Phone: <%= @contact.work_phone %></p>
+                <p>Personal Email: <%= @contact.personal_email %></p>
+                <p>Work Email: <%= @contact.work_email %></p>
+                <p>Home Address: <%= @contact.home_address %></p>
+                <p>Work Address: <%= @contact.work_address %></p>
+            </div>
+            <div class='eight wide column'> 
+                <% if @contact.last_meeting_date != nil %>
+                    <h4>Last Meeting Date:</h4>
+                    <%= @contact.last_meeting_date.strftime("%A %b %d %Y %l:%M %p") %>
+                <% end %>
+                <h4>Last Meeting Notes:</h4>
+                <%= @contact.last_meeting_notes %>
+                <h4>Contact Notes:</h4>
+                <%= @contact.contact_notes %>
+            </div>
+        </div>
     </div>
 
     <div class='ui button'>

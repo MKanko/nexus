@@ -1,5 +1,9 @@
 <% if @user.image %>
-    <img src=<%= @user.image %>/>
+    <div class='ui card photo'>
+        <div class='image'>
+            <img src=<%= asset_path('mk_image.jpg') %> />
+        </div>
+    </div>
 <% end %>
 
 <h3>Welcome <%= @user.username %></h3>
@@ -8,13 +12,12 @@
 
     <h4>Your Day:</h4>
 
-        <div class='ui blue segment'>
+        <div class='ui blue segment calendar'>
             <%= calendar number_of_days: 1, events: @user.tasks do |date, tasks| %>
                 <%= date.day %>
                 <% tasks.each do |task| %>
                     <div>
-                    <%= link_to task.name, task_path(task) %> -
-                    <%= task.start_time.strftime("%l:%M %p") %> - <%= task.end_time.strftime("%l:%M %p") %>
+                        <%= link_to task.name, task_path(task) %> - <%= task.start_time.strftime("%l:%M %p") %>                                         
                     </div>
                 <% end %>
             <% end %>
@@ -22,25 +25,40 @@
 
         <% if logged_in? %>
             <div class='ui button'>
-                <%= link_to 'Create Schedule', new_schedule_path %><br> 
+                <%= link_to 'New Schedule', new_schedule_path %><br> 
             </div>
             <div class='ui button'>
                 <%= link_to 'Your Schedules', schedules_path %>
             </div>
+            <div class='ui button'>
+                <%= link_to 'View Weekly', schedule_path(@user.schedules.find_by(name: 'My Work Schedule')) %>
+            </div>
         <% end %>
-        
-        <h4>Companies:</h4>
 
-        <div class='ui blue segment'>
-            <ul>
-                <h4>Search Companies:</h4>
-                <%= form_tag("/companies", method: "get") do %>
-                    <%= select_tag :company_type, options_for_select(Company.type, params[:company_type]), include_blank: true %>
-                    <%= submit_tag "Search" %>
-                <% end %>
-            </ul>
-            <div class='mini ui button'>
-                <%= link_to 'All', companies_path(@user.companies) %>
+        <div class='ui blue segment company'>
+            <div class='ui grid'>
+                <div class='six wide column'>
+                    <h4>Search Companies:</h4>
+                    <%= form_tag("/companies", method: "get") do %>
+                        <%= select_tag :company_type, options_for_select(Company.type, params[:company_type]), include_blank: true %>
+                        <%= submit_tag "Search" %>
+                    <% end %><br>
+                
+                    <div class='mini ui button'>
+                        <%= link_to 'All', companies_path(@user.companies) %>
+                    </div>
+                </div>
+                <div class='six wide column'>
+                    <h4>Search Contacts:</h4>
+                    <%= form_tag("/contacts", method: "get") do %>
+                        <%= select_tag :contact_type, options_for_select(Contact.type, params[:contact_type]), include_blank: true %>
+                        <%= submit_tag "Search" %>
+                    <% end %><br>
+                
+                    <div class='mini ui button'>
+                        <%= link_to 'All', contacts_path(@user.contacts) %>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -49,7 +67,7 @@
                 <%= link_to 'Edit User', edit_user_path %><br> 
             </div>
             <div class='ui button'>
-                <%= link_to 'Create Company', new_company_path %><br>
+                <%= link_to 'New Company', new_company_path %><br>
             </div>                    
         <% end %>
 
@@ -62,6 +80,7 @@
         <% if current_user.admin %>            
             <p>Admin: <%= @user.admin %></p>
         <% end %>
+
 
    
 
