@@ -21,9 +21,10 @@
         <%= f.label :name %>
         <%= f.text_field :name %><br><br>
 
-        <%= f.label :schedule_type %>
-        <%= f.text_field :schedule_type %><br><br>
+        <%= f.label :schedule_type, 'Schedule Type' %>
+        <%= f.select(:schedule_type, Schedule.type) %><br><br>
     
         <%= f.submit 'Submit' %>
     <% end %>
 </div>
+

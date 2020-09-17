@@ -8,6 +8,11 @@ class Company < ApplicationRecord
 
   validates :company_name, presence: true
 
+  validates_format_of :company_phone,
+    :with => /\(?[0-9]{3}\)?-[0-9]{3}-[0-9]{4}/,
+    :message => "- Phone numbers must be in xxx-xxx-xxxx format.",
+    :allow_blank => true
+
   def self.by_type(company_type)
     self.where(company_type: company_type) 
   end 
