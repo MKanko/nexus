@@ -14,10 +14,10 @@
         </div>
     <% end %>
 
-    <div class='ui blue segment'>
+    <div class='ui blue segment contact-index-seg'>
         <ul>
             <% @contacts.each do |con| %>
-                <li><%= link_to con.name, company_contact_path(con.company, con) %></li>
+                <div class='ui blue card'><%= link_to con.name, company_contact_path(con.company, con) %></div>
             <% end %>
         </ul>
     </div>
