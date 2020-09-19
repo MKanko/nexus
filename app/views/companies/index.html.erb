@@ -2,18 +2,16 @@
 <h3><%= current_user.username %></h3>
 
     <%= current_date %>
-
-    
-        <div class='ui blue card company-photo-card'>
-            <div class='image'>
-                <img src=<%= asset_path('mk_image.jpg') %> />
-            </div>
+ 
+    <div class='ui blue card company-photo-card'>
+        <div class='image'>
+            <img src=<%= asset_path('mk_image.jpg') %> />
         </div>
+    </div>
         
-
     <h4>Your Companies:</h4>
 
-        <div class='ui blue segment company-seg'>
+        <div class='ui blue segment company-index-seg'>
             <% @companies.each do |company| %>
                 <div class='ui blue card'>
                     <div class='content'>
