@@ -1,41 +1,74 @@
-<% if @user.image %>
-    <div class='ui card photo'>
-        <div class='image'>
-            <img src=<%= asset_path('mk_image.jpg') %> />
-        </div>
-    </div>
-<% end %>
-
 <h3>Welcome <%= @user.username %></h3>
 
-    <p><%= current_date %></p>
+    <p><%= current_datetime %></p>
 
-    <h4>Your Day:</h4>
-
-        <div class='ui blue segment calendar'>
-            <%= calendar number_of_days: 1, events: @user.tasks do |date, tasks| %>
-                <%= date.day %>
-                <% tasks.each do |task| %>
-                    <div>
-                        <%= link_to task.name, task_path(task) %> - <%= task.start_time.strftime("%l:%M %p") %>                                         
-                    </div>
-                <% end %>
-            <% end %>
+    <% if @user.image %>
+        <div class='ui blue card photo-card'>
+            <div class='image'>
+                <img src=<%= asset_path('mk_image.jpg') %> />
+            </div>
         </div>
+    <% end %>
+
+        <% @user.schedules.each do |schedule| %>
+            <% if schedule.name == 'My Work Schedule' %>
+                <% @sched = schedule %>
+            <% end %>
+        <% end %>
+
+        <% if @sched %>
+            <%= form_for @sched, :url => url_for(:controller => 'schedules', :action => 'switch_cal_view') do |f| %>   
+                <%= f.hidden_field :user_id, value: current_user.id %>
+                <%= f.hidden_field :id, value: @sched.id %><br><br>
+
+                <%= f.label :schedule_type, 'View Schedule Type' %>
+                <%= f.select(:schedule_type, ['Daily', 'Weekly']) %>
+            
+                <%= f.submit 'Switch' %>
+            <% end %>
+                    
+
+            <% if @sched.schedule_type == 'Daily' %>
+            
+                <div class='ui blue segment calendar-seg'>
+                    <%= calendar number_of_days: 1, events: @sched.tasks do |date, tasks| %>
+                        <%= date.day %>
+                        <% tasks.each do |task| %>
+                            <div>
+                                <%= link_to task.name, task_path(task) %> - <%= task.start_time.strftime("%l:%M %p") %>                                         
+                            </div>
+                        <% end %>
+                    <% end %>
+                </div>
+
+            <% elsif @sched.schedule_type == 'Weekly' %>
+                
+                <div class='ui blue segment'>
+                    <%= week_calendar events: @sched.tasks do |date, tasks| %>
+                        <%= date.day %>
+                        <% tasks.each do |task| %>
+                            <div>
+                                <%= link_to task.name, task_path(task) %>
+                            </div>
+                        <% end %>
+                    <% end %>
+                </div>
+            <% end %>
+        <% end %>
 
         <% if logged_in? %>
             <div class='ui button'>
                 <%= link_to 'New Schedule', new_schedule_path %><br> 
             </div>
+            <button class='ui button'>
+                <%= link_to 'Create Event', new_schedule_task_path(@sched) %>
+            </button>
             <div class='ui button'>
                 <%= link_to 'Your Schedules', schedules_path %>
-            </div>
-            <div class='ui button'>
-                <%= link_to 'View Weekly', schedule_path(@user.schedules.find_by(name: 'My Work Schedule')) %>
-            </div>
+            </div>           
         <% end %>
 
-        <div class='ui blue segment company'>
+        <div class='ui blue segment company-seg'>
             <div class='ui grid'>
                 <div class='six wide column'>
                     <h4>Search Companies:</h4>

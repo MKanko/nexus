@@ -7,7 +7,7 @@ class Schedule < ApplicationRecord
   validates :name, presence: true
   validates :schedule_type, presence: true
 
-  SCHEDULE_TYPES = ["Weekly", "Monthly"]
+  SCHEDULE_TYPES = ["Daily", "Weekly", "Monthly"]
 
   def self.type 
     SCHEDULE_TYPES 

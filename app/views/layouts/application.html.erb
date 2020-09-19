@@ -4,38 +4,37 @@
     <title>Nexus</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
     <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   </head>
-
-  <h1>Nexus</h1>
-
-  <body>
-    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-      <div class="container">
-        <div class="ui grey inverted menu">        
-        <%= link_to "Home", root_path, class: "item" %>      
-        <% if logged_in? %>                  
-            <%= link_to "Sign Out", logout_path, class: "item", method: "post" %>
+  <body> 
+    <div class="ui visible grey inverted left vertical sidebar menu thin side-menu">
+      <div class="ui grey inverted menu">
+        <h1 style="color: blue">Nexus</h1>
+      </div><br>
+      <div class="ui grey inverted menu">                
+        <%= link_to "Home", root_path, class: "item" %>
+      </div>              
+        <% if logged_in? %>
+            <div class="ui grey inverted menu">                 
+              <%= link_to "Sign Out", logout_path, class: "item", method: "post" %>            
+            </div>
         <% else%>
             <a class="item" href="<%= new_user_url %>"/>Sign Up</a>
             <a class="item" href="<%= signin_url %>"/>Sign In</a>
         <% end %>
-        </div>      
-      </div>
-    </div>
+      </div>      
+    </div>   
     <div align='center'>
       <% if flash[:alert] %>
           <%= flash[:alert] %>
       <% end %>
     </div>
     <br/>
-    <br/>   
-    <div class="ui container" role="main">   
+    <br/> 
+    <div class="ui container main-content" role="main">   
       <%= yield %>
     </div>   
   </body>
