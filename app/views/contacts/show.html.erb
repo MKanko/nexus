@@ -2,11 +2,19 @@
 
     <%= current_date %>
 
+    <% if @contact.company.user.image %>
+        <div class='ui blue card sched-show-photo-card'>
+            <div class='image'>
+                <img src=<%= asset_path(@contact.company.user.image) %> />
+            </div>
+        </div>
+    <% end %>
+
     <h4><%= link_to @contact.company.company_name, company_path(@contact.company) %></h4>
 
     <h4>Contact: <%= @contact.name %></h4>
 
-    <div class='ui blue segment'>
+    <div class='ui blue segment contact-show-seg'>
         <div class='ui grid'>
             <div class='eight wide column'> 
                 <p>Contact Type: <%= @contact.contact_type %></p>
@@ -22,12 +30,12 @@
             <div class='eight wide column'> 
                 <% if @contact.last_meeting_date != nil %>
                     <h4>Last Meeting Date:</h4>
-                    <%= @contact.last_meeting_date.strftime("%A %b %d %Y %l:%M %p") %>
+                        <%= @contact.last_meeting_date.strftime("%A %b %d %Y %l:%M %p") %>
                 <% end %>
                 <h4>Last Meeting Notes:</h4>
-                <%= @contact.last_meeting_notes %>
+                    <%= @contact.last_meeting_notes %>
                 <h4>Contact Notes:</h4>
-                <%= @contact.contact_notes %>
+                    <%= @contact.contact_notes %>
             </div>
         </div>
     </div>

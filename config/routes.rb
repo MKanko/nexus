@@ -5,6 +5,8 @@ Rails.application.routes.draw do
     get '/signin' => 'sessions#new'
     post '/signin' => 'sessions#create'
     post '/logout' => 'sessions#destroy'
+
+    patch '/switch-cal-view' => 'schedules#switch_cal_view'
     
     get '/auth/facebook/callback' => 'sessions#create'
   

@@ -1,20 +1,38 @@
 
 <h3><%= current_user.username %></h3>
 
-<%= current_date %>
-
-<h4>Your Companies:</h4>
-   
-    <% @companies.each do |company| %>
-        <div class='ui blue segment company'>
-            <h4><%= company.company_name %></h4>
-            <%= company.company_address %>
-            <br>
-            <%= company.company_industry %>
-            <br>
-            <%= link_to 'Details', company_path(company) %> 
+    <%= current_date %>
+ 
+    <% if current_user.image %>
+        <div class='ui blue card company-photo-card'>
+            <div class='image'>
+                <img src=<%= asset_path(current_user.image) %> />
+            </div>
         </div>
     <% end %>
+        
+    <h4>Your Companies:</h4>
+
+        <div class='ui blue segment company-index-seg'>
+            <% @companies.each do |company| %>
+                <div class='ui blue card'>
+                    <div class='content'>
+                        <div class='header'>
+                            <%= company.company_name %>
+                        </div>
+                        <div class='meta'>
+                            <%= company.company_address %>
+                        </div>
+                        <div class='description'>
+                            <%= company.company_industry %>
+                        </div>
+                        <div class='description'>
+                            <%= link_to 'Details', company_path(company) %>
+                        </div>                  
+                    </div> 
+                </div>          
+            <% end %>
+        </div>
         
     
 

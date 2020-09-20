@@ -2,16 +2,23 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.calendar {
+.calendar-seg {
     width: 50%;
 }
 
-.company {
+.company-seg {
     width: 75%;
-    background-color: powderblue !important;
+    background-color: lightblue !important;
 }
 
-.photo {
+.user-photo-card {
     width: 200px !important;
-    width: 200px !important;
+    
 }
+
+.sign-up-seg {
+    width: 75%;
+    background-color: lightblue !important;
+}
+
+

@@ -2,17 +2,32 @@
 
     <%= current_date %>
 
+    <% if @company.user.image %>
+        <div class='ui blue card company-photo-card'>
+            <div class='image'>
+                <img src=<%= asset_path(@company.user.image) %> />
+            </div>
+        </div>
+    <% end %>
+
     <h4><%= @company.company_name %></h4>
 
-    <div class='ui blue segment'>
-        <p>Company Address: <%= @company.company_address %></p>
-        <p><%= sanitize(display_primary_contact) %></p>
-        <p>Company Type: <%= @company.company_type %></p>
-        <p>Company Phone: <%= @company.company_phone %></p>
-        <p>Company Industry: <%= @company.company_industry %></p>
-        <p>Company Email: <%= @company.company_email %></p>
-        <p>Company Website: <%= @company.company_website %></p>
-        <p>Company Notes: <%= @company.company_notes %></p>
+    <div class='ui blue segment company-show-seg'>
+        <div class='ui grid'>
+            <div class='eight wide column'>
+                <p>Company Address: <%= @company.company_address %></p>
+                <p><%= sanitize(display_primary_contact) %></p>
+                <p>Company Type: <%= @company.company_type %></p>
+                <p>Company Phone: <%= @company.company_phone %></p>
+                <p>Company Industry: <%= @company.company_industry %></p>
+                <p>Company Email: <%= @company.company_email %></p>
+                <p>Company Website: <%= @company.company_website %></p>
+            </div>
+            <div class='eight wide column'>
+                <h4><p>Company Notes:</h4> 
+                    <%= @company.company_notes %></p>
+            </div>
+        </div>
     </div>
 
     <div class='ui button'>

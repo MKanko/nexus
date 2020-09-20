@@ -13,6 +13,12 @@ class SchedulesController < ApplicationController
         return render :new unless @schedule.save
         redirect_to schedule_path(@schedule)
     end
+
+    def switch_cal_view 
+        @schedule = Schedule.find(params[:schedule][:id])
+        @schedule.update(schedule_params)
+        redirect_to user_path(current_user)
+    end 
     
     def show
         @schedule = Schedule.find(params[:id])        

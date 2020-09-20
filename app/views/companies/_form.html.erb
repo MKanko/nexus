@@ -1,52 +1,50 @@
 
 <% if @company.errors.any? %>
     <div id="error_explanation">
-        <h2>
-        <%= pluralize(@company.errors.count, "error") %>
-        prohibited this company from being saved:
-        </h2>
-    
+        <h2><%= pluralize(@company.errors.count, "error") %>prohibited this company from being saved: </h2>  
         <ul>
-        <% @company.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-        <% end %>
+            <% @company.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
         </ul>
     </div>
 <% end %>
 
-<div class='ui blue segment'>  
-    <h3>Company:</h3>
-        <%= form_for @company do |f| %>
-        
-            <%= f.hidden_field :user_id, value: current_user.id %><br><br>
-            
-            <%= f.label :company_name %>
-            <%= f.text_field :company_name %><br><br>
+<div class='ui blue segment new-comp-seg'> 
+    <%= form_for @company do |f| %>
+        <div class='ui grid'>
+            <div class='eight wide column'>
+                <h4>Company:</h4>
 
-            <%= f.label :company_address %>
-            <%= f.text_field :company_address %><br><br>
+                <%= f.hidden_field :user_id, value: current_user.id %><br><br>
+                
+                <%= f.label :company_name %>
+                <%= f.text_field :company_name %><br><br>
 
-            <%= f.label :company_type %>
-            <%= f.select(:company_type, Company.type) %><br><br>
+                <%= f.label :company_address %>
+                <%= f.text_field :company_address %><br><br>
 
-            <%= f.label :company_phone %>
-            <%= f.text_field :company_phone %><br><br>
+                <%= f.label :company_type %>
+                <%= f.select(:company_type, Company.type) %><br><br>
 
-            <%= f.label :company_industry %>
-            <%= f.text_field :company_industry %><br><br>
+                <%= f.label :company_phone %>
+                <%= f.text_field :company_phone %><br><br>
 
-            <%= f.label :company_email %>
-            <%= f.text_field :company_email %><br><br>
+                <%= f.label :company_industry %>
+                <%= f.text_field :company_industry %><br><br>
 
-            <%= f.label :company_notes %>
-            <%= f.text_area :company_notes %><br><br>
+                <%= f.label :company_email %>
+                <%= f.text_field :company_email %><br><br>
 
-            <%= f.label :company_website %>
-            <%= f.text_field :company_website %><br><br>
+                <%= f.label :company_notes %>
+                <%= f.text_area :company_notes %><br><br>
 
-            <% if !is_edit %>
-
-                <h3>Contact:</h3>
+                <%= f.label :company_website %>
+                <%= f.text_field :company_website %><br><br>
+            </div>
+            <div class='eight wide column'>
+                <% if !is_edit %>
+                    <h4>Contact:</h4>
                     <%= f.fields_for :contacts do |contact| %>
 
                         <%= contact.label :name %>
@@ -90,9 +88,10 @@
 
                         <%= contact.label :last_meeting_notes %>
                         <%= contact.text_area :last_meeting_notes %><br><br>
-                    <% end %>           
-            <% end %>
-        <%= f.submit 'Submit' %><br>    
-    <% end %>   
+                    <% end %>
+                <% end %>
+            </div>
+        <%= f.submit 'Submit' %><br>                             
+    <% end %> 
 </div>
 

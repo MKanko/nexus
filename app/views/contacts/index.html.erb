@@ -1,26 +1,43 @@
-<% if !params[:contact_type].blank? %>
-    <% @contacts = @contacts.where(contact_type: params[:contact_type]) %>
-<% end %>
+<h3><%= current_user.username %></h3>
 
+    <%= current_date %>
 
-<h3><%= @company.company_name if @company %> Contacts:</h3>
-    <% if @company %>
-        <div>
-        <h4>Filter Contacts:</h4>
-            <%= form_tag("/companies/#{@company.id}/contacts", method: "get") do %>
-                <%= select_tag :contact_type, options_for_select(Contact.type, params[:contact_type]), include_blank: true %>
-                <%= submit_tag "Filter" %>
-            <% end %>
+    <% if current_user.image %>
+        <div class='ui blue card contact-index-photo-card'>
+            <div class='image'>
+                <img src=<%= asset_path(current_user.image) %> />
+            </div>
         </div>
     <% end %>
 
-    <div class='ui blue segment'>
-        <ul>
-            <% @contacts.each do |con| %>
-                <li><%= link_to con.name, company_contact_path(con.company, con) %></li>
+    <% if !params[:contact_type].blank? %>
+        <% @contacts = @contacts.where(contact_type: params[:contact_type]) %>
+    <% end %>
+
+
+    <h4><%= @company.company_name if @company %> Contacts:</h4>
+        <% if @company %>
+            <div>
+            <h4>Filter Contacts:</h4>
+                <%= form_tag("/companies/#{@company.id}/contacts", method: "get") do %>
+                    <%= select_tag :contact_type, options_for_select(Contact.type, params[:contact_type]), include_blank: true %>
+                    <%= submit_tag "Filter" %>
+                <% end %>
+            </div>
+        <% end %>
+
+        <div class='ui blue segment contact-index-seg'>
+            <ul>
+                <% @contacts.each do |con| %>
+                    <div class='ui blue card'><%= link_to con.name, company_contact_path(con.company, con) %></div>
+                <% end %>
+            </ul>
+        </div>
+        <div>
+            <% if @company %>
+                <%= link_to 'Back To Company', company_path(@company) %>
             <% end %>
-        </ul>
-    </div>
+        </div>
 
     
 
