@@ -15,7 +15,7 @@
  *= require simple_calendar
  */
 
- body {
+body {
     background:#e0e0eb;
 }
 
@@ -29,6 +29,15 @@
 
 .sign-in-seg {
     width: 75%;
+    background-color: lightblue !important;
+}
+
+#menu-container {
+    height: 100vh;  
+    // width: 50%;    
+}
+
+.menu-seg {
     background-color: lightblue !important;
 }
 
