@@ -1,20 +1,16 @@
 
 <% if @task.errors.any? %>
-<div id="error_explanation">
-    <h2>
-    <%= pluralize(@task.errors.count, "error") %>
-    prohibited this task from being saved:
-    </h2>
-
-    <ul>
-    <% @task.errors.full_messages.each do |msg| %>
-    <li><%= msg %></li>
-    <% end %>
-    </ul>
-</div>
+    <div id="error_explanation">
+        <h2><%= pluralize(@task.errors.count, "error") %>prohibited this task from being saved: </h2>
+        <ul>
+            <% @task.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+            <% end %>
+        </ul>
+    </div>
 <% end %>
 
-<div class='ui blue segment'>
+<div class='ui blue segment new-task-seg'>
     <%= form_for @task do |f| %>
 
         <%= f.hidden_field :schedule_id, value: @task.schedule.id  %>
@@ -41,6 +37,5 @@
         <%= f.text_field :status %><br><br>
 
         <%= f.submit 'Submit' %>
-
     <% end %>
 </div>

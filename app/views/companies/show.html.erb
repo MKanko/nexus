@@ -2,11 +2,13 @@
 
     <%= current_date %>
 
-    <div class='ui blue card company-photo-card'>
-        <div class='image'>
-            <img src=<%= asset_path('mk_image.jpg') %> />
+    <% if @company.user.image %>
+        <div class='ui blue card company-photo-card'>
+            <div class='image'>
+                <img src=<%= asset_path(@company.user.image) %> />
+            </div>
         </div>
-    </div>
+    <% end %>
 
     <h4><%= @company.company_name %></h4>
 

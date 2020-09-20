@@ -1,30 +1,28 @@
 <% if @schedule.errors.any? %>
     <div id="error_explanation">
-        <h2>
-        <%= pluralize(@schedule.errors.count, "error") %>
-        prohibited this schedule from being saved:
-        </h2>
-    
+        <h2><%= pluralize(@schedule.errors.count, "error") %>prohibited this schedule from being saved: </h2>  
         <ul>
-        <% @schedule.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-        <% end %>
+            <% @schedule.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+            <% end %>
         </ul>
     </div>
 <% end %>
 
-<div class='ui blue segment'>
-    <%= form_for @schedule do |f| %>
+    <div class='ui blue segment new-sched-seg'>
+        <%= form_for @schedule do |f| %>
+            
+            <%= f.hidden_field :user_id, value: current_user.id %><br><br>
+
+            <%= f.label :name %>
+            <%= f.text_field :name %><br><br>
+
+            <%= f.label :schedule_type, 'Schedule Type' %>
+            <%= f.select(:schedule_type, Schedule.type) %><br><br>
         
-        <%= f.hidden_field :user_id, value: current_user.id %><br><br>
+            <%= f.submit 'Submit' %>
+        <% end %>
+    </div>
 
-        <%= f.label :name %>
-        <%= f.text_field :name %><br><br>
-
-        <%= f.label :schedule_type, 'Schedule Type' %>
-        <%= f.select(:schedule_type, Schedule.type) %><br><br>
     
-        <%= f.submit 'Submit' %>
-    <% end %>
-</div>
 

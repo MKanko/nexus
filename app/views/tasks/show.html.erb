@@ -1,31 +1,39 @@
 <h3><%= @task.schedule.user.username %></h3>
 
-<%= current_date %>
+    <%= current_date %>
 
-<h4><%= @task.name %></h4>
-
-<div class='ui blue segment'>
-    <h4>Task for <%= @task.company.company_name %></h4>
-
-        <p>Task: <%= @task.name %></p>
-        <p>Type: <%= @task.task_type %></p>
-        <h4>Description: <%= @task.notes %></h4><br>
-        <p>Start Time: <%= @task.start_time.strftime("%A %d %b %Y %l:%M %p") %></p>
-        <% if @task.end_time != nil %>
-            <p>End Time: <%= @task.end_time.strftime("%A %d %b %Y %l:%M %p") %></p>
+    <% if @task.schedule.user.image %>     
+            <div class='ui blue card task-photo-card'>
+                <div class='image'>
+                    <img src=<%= asset_path(@task.schedule.user.image) %> />
+                </div>
+            </div>
         <% end %>
-        <p>Status: <%= @task.status %></p>
-</div>
 
-    <div class='ui button'>
-        <%= link_to 'Edit Task', edit_task_path(@task) %>
+    <h4><%= @task.name %></h4>
+
+    <div class='ui blue segment task-show-seg'>
+        <h4>Task for <%= @task.company.company_name %></h4>
+
+            <p>Task: <%= @task.name %></p>
+            <p>Type: <%= @task.task_type %></p>
+            <h4>Description: <%= @task.notes %></h4><br>
+            <p>Start Time: <%= @task.start_time.strftime("%A %d %b %Y %l:%M %p") %></p>
+            <% if @task.end_time != nil %>
+                <p>End Time: <%= @task.end_time.strftime("%A %d %b %Y %l:%M %p") %></p>
+            <% end %>
+            <p>Status: <%= @task.status %></p>
     </div>
 
-    <div class='ui button'>
-        <%= link_to 'Delete Task', @task, method: :delete, data: { confirm: "Are you sure?" } %>
-    </div>
+        <div class='ui button'>
+            <%= link_to 'Edit Task', edit_task_path(@task) %>
+        </div>
 
-    <div class='ui button'>
-        <%= link_to 'Back to Schedule', schedule_path(@task.schedule) %>
-    </div>
+        <div class='ui button'>
+            <%= link_to 'Delete Task', @task, method: :delete, data: { confirm: "Are you sure?" } %>
+        </div>
+
+        <div class='ui button'>
+            <%= link_to 'Back to Schedule', schedule_path(@task.schedule) %>
+        </div>
 

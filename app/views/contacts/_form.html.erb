@@ -1,24 +1,21 @@
 
-    <% if @contact.errors.any? %>
-        <div id="error_explanation">
-            <h2>
-            <%= pluralize(@contact.errors.count, "error") %>
-            prohibited this contact from being saved:
-            </h2>
-        
+<% if @contact.errors.any? %>
+    <div id="error_explanation">
+        <h2><%= pluralize(@contact.errors.count, "error") %>prohibited this contact from being saved: </h2>      
             <ul>
             <% @contact.errors.full_messages.each do |msg| %>
             <li><%= msg %></li>
             <% end %>
-            </ul>
-        </div>
-    <% end %>
-   
+        </ul>
+    </div>
+<% end %>
+
+<div class='ui blue segment contact-edit-seg'>  
     <%= form_for [@company, @contact] do |f| %>   
-   
+
         <%= f.hidden_field :company_id, value: @company.id %>
 
-        <h3>Contact:</h3>
+        <h4>Contact:</h4>
 
         <%= f.label :name %>
         <%= f.text_field :name %><br><br>              
@@ -60,5 +57,5 @@
         <%= f.text_area :contact_notes %><br><br>
 
         <%= f.submit 'Submit' %>
-
     <% end %>
+</div>

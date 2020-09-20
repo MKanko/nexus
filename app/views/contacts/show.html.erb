@@ -2,11 +2,13 @@
 
     <%= current_date %>
 
-    <div class='ui blue card company-photo-card'>
-        <div class='image'>
-            <img src=<%= asset_path('mk_image.jpg') %> />
+    <% if @contact.company.user.image %>
+        <div class='ui blue card sched-show-photo-card'>
+            <div class='image'>
+                <img src=<%= asset_path(@contact.company.user.image) %> />
+            </div>
         </div>
-    </div>
+    <% end %>
 
     <h4><%= link_to @contact.company.company_name, company_path(@contact.company) %></h4>
 

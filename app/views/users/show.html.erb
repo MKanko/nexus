@@ -1,11 +1,11 @@
 <h3>Welcome <%= @user.username %></h3>
 
     <p><%= current_datetime %></p>
-
-    <% if @user.image %>
-        <div class='ui blue card photo-card'>
+    
+    <% if @user.image %>     
+        <div class='ui blue card user-photo-card'>
             <div class='image'>
-                <img src=<%= asset_path('mk_image.jpg') %> />
+                <img src=<%= asset_path(@user.image) %> />
             </div>
         </div>
     <% end %>
@@ -60,9 +60,11 @@
             <div class='ui button'>
                 <%= link_to 'New Schedule', new_schedule_path %><br> 
             </div>
-            <button class='ui button'>
-                <%= link_to 'Create Event', new_schedule_task_path(@sched) %>
-            </button>
+            <% if @schedule %>
+            <div class='ui button'>
+                <%= link_to 'New Event', new_schedule_task_path(@sched) %>
+            </div>
+            <% end %>
             <div class='ui button'>
                 <%= link_to 'Your Schedules', schedules_path %>
             </div>           

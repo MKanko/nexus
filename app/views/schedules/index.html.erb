@@ -1,12 +1,14 @@
 <h3><%= current_user.username %></h3>
 
     <%= current_date %>
-
-    <div class='ui blue card sched-index-photo-card'>
-        <div class='image'>
-            <img src=<%= asset_path('mk_image.jpg') %> />
+    
+    <% if current_user.image %>
+        <div class='ui blue card sched-photo-card'>
+            <div class='image'>
+                <img src=<%= asset_path(current_user.image) %> />
+            </div>
         </div>
-    </div>
+    <% end %>
 
     <h4>Your Schedules:</h4>
 
@@ -16,5 +18,9 @@
                     <div class='ui blue card'><%= link_to sched.name, schedule_path(sched) %></div>
                 <% end %>
             </ul>
+        </div>
+
+        <div class='ui button'>
+            <%= link_to 'New Schedule', new_schedule_path %><br> 
         </div>
     

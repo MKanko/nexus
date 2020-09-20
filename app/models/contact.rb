@@ -8,7 +8,7 @@ class Contact < ApplicationRecord
     :message => "- Phone numbers must be in xxx-xxx-xxxx format.",
     :allow_blank => true
 
-   CONTACT_TYPES = ["Lead", "Associate", "Primary", "At Company", "Employee", "Personal"]
+   CONTACT_TYPES = ["Primary Contact", "Secondary Contact", "Company Owner", "Executive Officer", "Company Associate", "Employee", "Lead", "Personal", ]
 
    def self.type 
     CONTACT_TYPES 

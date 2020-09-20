@@ -1,6 +1,14 @@
 <h3><%= @schedule.user.username %></h3>
 
     <span><%= current_date %></span>
+
+    <% if @schedule.user.image %>
+        <div class='ui blue card sched-photo-card'>
+            <div class='image'>
+                <img src=<%= asset_path(@schedule.user.image) %> />
+            </div>
+        </div>
+    <% end %>
  
     <%= form_for @schedule do |f| %>   
         <%= f.hidden_field :user_id, value: current_user.id %><br><br>
@@ -55,12 +63,15 @@
     <% end %>
 
     <% if logged_in? %>           
-        <button class='ui button'>
+        <div class='ui button'>
             <%= link_to 'Edit Schedule', edit_schedule_path(@schedule) %>
-        </button>
-        <button class='ui button'>
+        </div>
+        <div class='ui button'>
             <%= link_to 'Create Event', new_schedule_task_path(@schedule) %>
-        </button>
+        </div>
+        <div class='ui button'>
+                <%= link_to 'Back To Schedules', schedules_path %>
+            </div> 
         <div class='ui button'>
             <%= link_to 'Delete Schedule', @schedule, method: :delete, data: { confirm: "Are you sure?" } %>
         </div>
