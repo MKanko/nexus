@@ -3,7 +3,7 @@
     <%= current_date %>
 
     <% if @contact.company.user.image %>
-        <div class='ui blue card sched-show-photo-card'>
+        <div class='ui blue card contact-photo-card'>
             <div class='image'>
                 <img src=<%= asset_path(@contact.company.user.image) %> />
             </div>

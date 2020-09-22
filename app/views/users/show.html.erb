@@ -60,9 +60,9 @@
             <div class='ui button'>
                 <%= link_to 'New Schedule', new_schedule_path %><br> 
             </div>
-            <% if @schedule %>
+            <% if @user.schedules %>
             <div class='ui button'>
-                <%= link_to 'New Event', new_schedule_task_path(@sched) %>
+                <%= link_to 'Create Event', new_schedule_task_path(@sched) %>
             </div>
             <% end %>
             <div class='ui button'>
