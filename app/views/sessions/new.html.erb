@@ -3,13 +3,13 @@
     <%= form_for @user, url: signin_path, method: :post do |f| %>
 
         <%= f.label :username %>
-        <%= f.text_field :username %><br><br>
+        <%= f.text_field :username, value: 'Mark' %><br><br>
 
         <%= f.label :email %>
-        <%= f.text_field :email %><br><br>
+        <%= f.text_field :email, value: 'mark@coolmail.com'  %><br><br>
 
         <%= f.label :password %>
-        <%= f.password_field :password, id: "password" %><br><br>
+        <%= f.password_field :password, id: "password", value: 'm56789' %><br><br>
 
         <%= f.label :admin %>
         <%= f.check_box :admin %><br><br>
